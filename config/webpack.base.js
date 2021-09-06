@@ -15,14 +15,6 @@ const baseConfig = (env) => {
         },
         module: {
             rules: [
-                // {
-                //     test: /\.less$/,
-                //     use: [
-                //         'style-loader',
-                //         'css-loader',
-                //         'less-loader',
-                //     ]
-                // },
                 // For webpack v5
                 {
                     test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,

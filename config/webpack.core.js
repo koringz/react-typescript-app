@@ -55,6 +55,32 @@ const coreConfig = (env) => {
                         'css-loader',   
                     ]
                 },
+                {
+                    test: /\.scss$/i,
+                    use: [
+                        // 将 JS 字符串生成为 style 节点
+                        'style-loader',
+                        // 将 CSS 转化成 CommonJS 模块
+                        'css-loader',
+                        // 将 Sass 编译成 CSS
+                        'sass-loader',
+                    ],
+                },
+                {
+                    test: /\.less$/i,
+                    use: [
+                      'style-loader',
+                      'css-loader',
+                      {
+                        loader: 'less-loader',
+                        options: {
+                          lessOptions: {
+                            // strictMath: true,
+                          },
+                        },
+                      },
+                    ]
+                }
             ]
         },
         plugins: [
