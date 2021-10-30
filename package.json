@@ -10,7 +10,8 @@
     "build:dev": "cross-env FIRST_ENV=development --env.NODE_ENV=development webpack --config config/webpack.development.config.js",
     "build:prod": "cross-env FIRST_ENV=production --env.NODE_ENV=production webpack --config config/webpack.production.config.js",
     "build:test": "cross-env FIRST_ENV=testing --env.NODE_ENV=testing webpack --config config/webpack.testing.config.js",
-    "polp:build": "polp pages `call name generator pages`"
+    "polp:build": "polp pages `call name generator pages`",
+    "upgrade": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",
@@ -19,6 +20,7 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
     "@types/react": "^17.0.20",
+    "@types/react-document-title": "^2.0.5",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
     "antd": "^4.16.13",
@@ -33,9 +35,12 @@
     "postcss": "^8.3.6",
     "postcss-loader": "^6.1.1",
     "react": "^17.0.2",
+    "react-document-title": "^2.0.3",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "style-loader": "^3.2.1",
+    "typescript": "^4.4.2",
     "webpack": "^5.52.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.0",

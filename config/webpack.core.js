@@ -44,6 +44,7 @@ const coreConfig = (env) => {
                                 "@babel/preset-react", 
                                 "@babel/preset-typescript" // 支持 .ts 语法解析
                             ],
+                            cacheDirectory: true,   // 启用缓存
                         },
                     },
                 },

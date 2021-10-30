@@ -8,11 +8,18 @@ module.exports = {
     }],
     actions: data => {
         const name = '{{properCase name}}'
-        const actions = [{
-            type: 'add',
-            path: `src/components/${name}/index.vue`,
-            templateFile: 'plop-templates/components/tmp.hbs',
-        }]
+        const actions = [
+            {
+                type: 'add',
+                path: `src/components/${name}/index.tsx`,
+                templateFile: 'plop-templates/components/tmp.hbs',
+            },
+            {
+                type: 'add',
+                path: `src/components/${name}/index.css`,
+                templateFile: 'plop-templates/components/style.hbs',
+            },
+        ]
 
         return actions
     }

@@ -1,25 +1,14 @@
-{{#if template}}
-<template>
-  <div />
-</template>
-{{/if}}
+import React from "react"
 
-{{#if script}}
-<script>
-export default {
-  name: '{{ properCase name }}',
-  props: {},
-  data() {
-    return {}
-  },
-  created() {},
-  mounted() {},
-  methods: {}
+class {{properCase name}} extends React.Component{
+
+  render() {
+    return (
+      <div>
+        {/* something */}
+      </div>
+    )
+  }
 }
-</script>
-{{/if}}
 
-{{#if style}}
-<style lang="scss" scoped>
-</style>
-{{/if}}
+export default {{properCase name}}

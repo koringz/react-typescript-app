@@ -1,5 +1,4 @@
-
-const path = require("path")
+const path = require('path')
 const webpack = require('webpack')
 // 用于删除/清理构建文件夹
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -7,11 +6,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 // const devMode = process.env.NODE_ENV !== "production";
 
-const baseConfig = (env) => {
+const baseConfig = env => {
     return {
         // 开发环境优化压缩文件
         optimization: {
-            minimize: true,
+            minimize: true
         },
         module: {
             rules: [
@@ -23,15 +22,15 @@ const baseConfig = (env) => {
                     options: {
                         name: '[name].[contenthash].[ext]',
                         outputPath: 'static/assets/',
-                        publicPath: 'static/assets/',
-                    },
-                },
+                        publicPath: 'static/assets/'
+                    }
+                }
             ]
         },
         plugins: [
             // 构建的进度条
             new webpack.ProgressPlugin(),
-            new CleanWebpackPlugin(),
+            new CleanWebpackPlugin()
         ]
     }
 }
