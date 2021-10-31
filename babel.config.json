@@ -6,5 +6,6 @@
                 "isTSX": true 
             }
         ],
+        "react-hot-loader/babel"
     ]
 }
