@@ -6,7 +6,7 @@
 import * as React from 'react'
 import '@/styles/footer.less'
 
-export default class Footer extends React.Component {
+export default class AppFooter extends React.Component {
     render() {
         return (
             <div className="footer-container">

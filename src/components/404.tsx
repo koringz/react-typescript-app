@@ -7,7 +7,7 @@ import * as React from 'react'
 import DocumentTitle from 'react-document-title'
 import { Button } from 'antd'
 // import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import AppFooter from '@/components/AppFooter'
 
 const styles: any = {
     width: '100%',
@@ -335,7 +335,7 @@ export default class NotFound extends React.Component {
                         </div>
                     </div>
 
-                    <Footer />
+                    <AppFooter />
                 </div>
             </DocumentTitle>
         )

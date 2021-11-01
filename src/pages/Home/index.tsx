@@ -20,7 +20,7 @@ import { Layout } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
 const Home: React.FC = (props): React.ReactElement => {
-    const { location, history, routes } = props
+    const { location, history, routes } = props as any
     const { children } = routes
     location.pathname = '/home/sub'
     console.log('home============', routes.children)
@@ -35,7 +35,7 @@ const Home: React.FC = (props): React.ReactElement => {
                             <ComponentWillLoad config={children} />
                         ))}
                     </Switch> */}
-                    <Link to={'/home/sub'}>跳转子页面</Link>
+                    <Link to={'/table'}>跳转子页面</Link>
                 </Content>
                 <Footer>跳转子页面</Footer>
             </Layout>

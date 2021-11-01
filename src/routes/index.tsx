@@ -9,8 +9,8 @@ import {
     RouteComponentProps
 } from 'react-router-dom'
 
-export const Load = (Comp: any) => {
-    console.log(Comp)
+export const Load = (Comp: any, routeProps: any) => {
+    console.log(Comp, routeProps)
     // component 未必选
     const Com = Comp.component
     if (!Com) return null
@@ -77,11 +77,11 @@ class PermissionAuth extends React.Component {
                         return (
                             <Switch>
                                 <Redirect from={targetRouterConfig.path} to={RedirectPath} />
-                                <Route path={RedirectPath} render={routeProps => <Load {...ChildComponent} />} />
+                                <Route path={RedirectPath} render={(routeProps: any) => <Load {...ChildComponent} routeProps={routeProps} />} />
                             </Switch>
                         )
                     } else {
-                        return <Route path={pathname} render={routeProps => <Load {...targetRouterConfig} />} />
+                        return <Route path={pathname} render={(routeProps: any) => <Load {...targetRouterConfig} routeProps={routeProps} />} />
                     }
                 } else {
                     // 如果路由不合法,重定向到 404 页面

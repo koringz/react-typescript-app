@@ -10,10 +10,9 @@ import {
 } from 'react-router-dom'
 import { hot } from 'react-hot-loader/root'
 
+import { Load } from '@/routes/index'
 import Routes from '@/routes/baseRoute'
-import ComponentWillLoad, { Load } from '@/routes/index'
-
-console.log(Routes)
+import DefaultLayout from '@/layout/DefaultLayout'
 
 const Nofound = Routes.find((v: any) => '/404' === v.path) as any
 const Login = Routes.find((v: any) => '/login' === v.path) as any
@@ -24,10 +23,9 @@ class App extends React.Component {
             <HashRouter>
                 <Switch>
                     <Redirect exact from="/" to="/home" />
-                    {/* <Route path={'/home'} render={routeProps => <Load {...Home} />} /> */}
                     <Route path={'/login'} render={routeProps => <Load {...Login} />} />
                     <Route path={'/404'} render={routeProps => <Load {...Nofound} />} />
-                    <ComponentWillLoad config={Routes} />
+                    <Route path={'/'} render={(routeProps: any) => <DefaultLayout {...routeProps} />} />
                 </Switch>
             </HashRouter>
         )
