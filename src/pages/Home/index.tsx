@@ -27,7 +27,6 @@ const Home: React.FC = (props): React.ReactElement => {
     return (
         <div>
             <Layout>
-                <Header>Header</Header>
                 <Content>
                     {/* <Switch>
                         <Redirect from="/home" to="/home/sub" />

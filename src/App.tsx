@@ -16,7 +16,6 @@ import DefaultLayout from '@/layout/DefaultLayout'
 
 const Nofound = Routes.find((v: any) => '/404' === v.path) as any
 const Login = Routes.find((v: any) => '/login' === v.path) as any
-const Home = Routes.find((v: any) => '/home' === v.path) as any
 class App extends React.Component {
     render() {
         return (

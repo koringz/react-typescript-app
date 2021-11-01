@@ -6,10 +6,18 @@
 import * as React from 'react'
 import '@/styles/footer.less'
 
+const div1 = {
+    clear: 'both',
+    float: 'left',
+    'margin-left': 0,
+    'margin-right': 0,
+    width: '100%'
+}
+
 export default class AppFooter extends React.Component {
     render() {
         return (
-            <div className="footer-container">
+            <div className="footer-container" style={div1}>
                 <div className="footer">
                     <div className="copyright">Copyright@2021-2025 11331144***</div>
                 </div>
