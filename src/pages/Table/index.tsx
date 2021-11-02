@@ -13,7 +13,7 @@ class Table extends React.Component {
     render() {
         return (
             <div>
-                {/* something */}koringz
+                {/* something */}koringz 123123
                 <div className="table">table 12312321312</div>
                 <div>12313</div>
                 <div>

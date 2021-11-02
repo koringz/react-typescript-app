@@ -9,6 +9,11 @@ import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'ant
 
 const { Header } = Layout
 
+const div2 = {
+    display: 'flex',
+    flex: 1
+}
+
 const AppHeader = (props: any) => {
     const { curActive } = props
     console.log('props===', props)
@@ -17,7 +22,7 @@ const AppHeader = (props: any) => {
         <div className="header-container">
             <Header className="header">
                 <div className="section">
-                    <ul>
+                    <ul style={div2}>
                         <li>
                             <a href="/" rel="noopener noreferrer" className={curActive}>
                                 首页

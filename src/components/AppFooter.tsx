@@ -9,8 +9,8 @@ import '@/styles/footer.less'
 const div1 = {
     clear: 'both',
     float: 'left',
-    'margin-left': 0,
-    'margin-right': 0,
+    marginLeft: 0,
+    marginRight: 0,
     width: '100%'
 }
 

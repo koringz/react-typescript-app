@@ -27,6 +27,14 @@ const setRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
+        path: '/',
+        name: '/',
+        needLogin: true,
+        title: '表格',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/layout/DefaultLayout'))
+    },
+    {
         path: '/home',
         name: 'home',
         needLogin: true,
