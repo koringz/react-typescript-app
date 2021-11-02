@@ -1,12 +1,9 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import {
     BrowserRouter as Router,
-    HashRouter,
     Redirect,
     Switch,
-    Route,
-    Link,
-    RouteComponentProps
+    Route
 } from 'react-router-dom'
 
 export const Load = (Comp: any, routeProps: any) => {
@@ -113,13 +110,6 @@ class ComponentWillLoad extends React.Component {
         return (
             <React.Fragment>
                 <PermissionAuth {...getRoutes}></PermissionAuth>
-                {/* {routes.map((items, key) => (
-                    <Route
-                        key={key}
-                        path={items.path}
-                        render={(routeProps: RouteComponentProps) => <Load {...items} routeProps={getRoutes}></Load>}
-                    />
-                ))} */}
             </React.Fragment>
         )
     }
