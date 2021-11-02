@@ -7,6 +7,7 @@ import ComponentWillLoad from '@/routes/index'
 import Routes from '@/routes/baseRoute'
 
 import './index.scss'
+import { Layout } from '_antd@4.16.13@antd'
 
 const div1 = {
     backgroundColor: '#44014C', //驼峰法
@@ -17,7 +18,7 @@ const div1 = {
 const DefaultLayout = (props: any) => {
     console.log(props)
     return (
-        <div>
+        <Layout style={{ height: "100%"}}>
             <AppHeader />
             <div className="wrapper d-flex flex-column min-vh-100 bg-light">
                 <AppSidebar />
@@ -28,7 +29,7 @@ const DefaultLayout = (props: any) => {
                 </div>
             </div>
             <AppFooter />
-        </div>
+        </Layout>
     )
 }
 
