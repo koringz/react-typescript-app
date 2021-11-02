@@ -22,7 +22,6 @@ const { Header, Footer, Sider, Content } = Layout
 const Home: React.FC = (props): React.ReactElement => {
     const { location, history, routes } = props as any
     const { children } = routes
-    location.pathname = '/home/sub'
     console.log('home============', routes.children)
     return (
         <div>
@@ -34,7 +33,7 @@ const Home: React.FC = (props): React.ReactElement => {
                             <ComponentWillLoad config={children} />
                         ))}
                     </Switch> */}
-                    <Link to={'/table'}>跳转子页面</Link>
+                    <Link to={'/table'}>跳转子页面123123</Link>
                 </Content>
                 <Footer>跳转子页面</Footer>
             </Layout>

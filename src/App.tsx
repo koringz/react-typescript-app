@@ -5,8 +5,6 @@ import {
     Redirect,
     Switch,
     Route,
-    Link,
-    RouteComponentProps
 } from 'react-router-dom'
 import { hot } from 'react-hot-loader/root'
 
