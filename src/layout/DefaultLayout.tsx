@@ -2,16 +2,16 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { Layout } from 'antd'
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const { Sider, Header, Content, Footer } = Layout
 
-import { AppSidebar, AppFooter, AppHeader } from '../components/index'
+import { AppSidebar, AppFooter, AppHeader, AppBreadcrumb } from '../components/index'
 import ComponentWillLoad from '@/routes/index'
 import PermissionRoutes from '@/routes/baseRoute'
 import './index.scss'
 
 const div1 = {
-    backgroundColor: '#44014C', //驼峰法
+    backgroundColor: '#eee', //驼峰法
     width: 'calc(100% - 256px)',
     float: 'right'
 }
@@ -28,6 +28,7 @@ const DefaultLayout = (props: any) => {
                     </Switch>
                 </div>
                 <div className="archive" style={div1}>
+                    <AppBreadcrumb />
                     <TransitionGroup className="layout__route">
                         <CSSTransition key={location.pathname} classNames="layout__route" timeout={300}>
                             <Switch>
