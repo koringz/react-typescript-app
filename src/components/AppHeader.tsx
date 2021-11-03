@@ -16,7 +16,7 @@ const div2 = {
 
 const AppHeader = (props: any) => {
     const { curActive } = props
-    console.log('props===', props)
+    // console.log('props===', props)
 
     return (
         <div className="header-container">

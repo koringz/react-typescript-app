@@ -9,11 +9,11 @@ import {
 import { hot } from 'react-hot-loader/root'
 
 import { Load } from '@/routes/index'
-import Routes from '@/routes/baseRoute'
+import { SetRoutes } from '@/routes/baseRoute'
 import DefaultLayout from '@/layout/DefaultLayout'
 
-const Nofound = Routes.find((v: any) => '/404' === v.path) as any
-const Login = Routes.find((v: any) => '/login' === v.path) as any
+const Login = SetRoutes.find((v: any) => '/login' === v.key) as any
+const Nofound = SetRoutes.find((v: any) => '/404' === v.key) as any
 class App extends React.Component {
     render() {
         return (

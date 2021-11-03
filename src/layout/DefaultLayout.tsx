@@ -1,13 +1,14 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import { Layout } from 'antd'
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
+const { Sider, Header, Content, Footer } = Layout
 
 import { AppSidebar, AppFooter, AppHeader } from '../components/index'
 import ComponentWillLoad from '@/routes/index'
-import Routes from '@/routes/baseRoute'
-
+import PermissionRoutes from '@/routes/baseRoute'
 import './index.scss'
-import { Layout } from '_antd@4.16.13@antd'
 
 const div1 = {
     backgroundColor: '#44014C', //驼峰法
@@ -16,16 +17,25 @@ const div1 = {
 }
 
 const DefaultLayout = (props: any) => {
-    console.log(props)
+    // console.log(props)
     return (
-        <Layout style={{ height: "100%"}}>
+        <Layout style={{ height: '100%' }}>
             <AppHeader />
-            <div className="wrapper d-flex flex-column min-vh-100 bg-light">
-                <AppSidebar />
-                <div className="archive" style={div1}>
+            <div className="wrapper">
+                <div style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', float: 'left', width: '256px' }}>
                     <Switch>
-                        <ComponentWillLoad config={Routes} />
+                        <AppSidebar menus={PermissionRoutes} />
                     </Switch>
+                </div>
+                <div className="archive" style={div1}>
+                    <TransitionGroup className="layout__route">
+                        <CSSTransition key={location.pathname} classNames="layout__route" timeout={300}>
+                            <Switch>
+                                {/* <SiderNav menus={setRoutes}/> */}
+                                <ComponentWillLoad config={PermissionRoutes} />
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
                 </div>
             </div>
             <AppFooter />

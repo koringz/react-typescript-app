@@ -5,9 +5,10 @@ import {
     Switch,
     Route
 } from 'react-router-dom'
+import { deepFilterMap } from "@/utils/deep" 
 
 export const Load = (Comp: any, routeProps: any) => {
-    console.log(Comp, routeProps)
+    // console.log(Comp, routeProps)
     // component 未必选
     const Com = Comp.component
     if (!Com) return null
@@ -41,12 +42,11 @@ class PermissionAuth extends React.Component {
         const { location, config } = this.props as any
         const { pathname } = location
         const isLogin = this.isLogin()
-        console.log(isLogin)
-        console.log(pathname)
-        // console.log(config)
+        // console.log(isLogin, pathname, config)
 
         // 是否存在用户搜寻路由目标
-        const targetRouterConfig = config.find((v: any) => v.path === pathname)
+        const getDeepFilterMap = deepFilterMap([pathname],config)
+        const targetRouterConfig = getDeepFilterMap.length ? getDeepFilterMap[0] : null
 
         // 访问默认无权限路由
         if (targetRouterConfig && !targetRouterConfig.needLogin && !isLogin) {
@@ -69,8 +69,8 @@ class PermissionAuth extends React.Component {
                     const RedirectPath = targetRouterConfig.redirect
                     const Children = targetRouterConfig.children
                     if (RedirectPath && !NoComponent) {
-                        console.log('Children====', Children)
-                        const ChildComponent = Children.find((v: any) => v.path === RedirectPath) as any
+                        // console.log('Children====', Children)
+                        const ChildComponent = Children.find((v: any) => v.key === RedirectPath) as any
                         return (
                             <Switch>
                                 <Redirect from={targetRouterConfig.path} to={RedirectPath} />
@@ -106,7 +106,7 @@ class PermissionAuth extends React.Component {
 class ComponentWillLoad extends React.Component {
     render() {
         const getRoutes = this.props
-        console.log('getRoute', getRoutes)
+        // console.log('getRoute', getRoutes)
         return (
             <React.Fragment>
                 <PermissionAuth {...getRoutes}></PermissionAuth>

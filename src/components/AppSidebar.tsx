@@ -4,6 +4,7 @@
  */
 
 import * as React from 'react'
+import { Link, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
 import {
     AppstoreOutlined,
@@ -14,63 +15,139 @@ import {
     ContainerOutlined,
     MailOutlined
 } from '@ant-design/icons'
+import { DownOutlined } from '@ant-design/icons'
 
-const { SubMenu } = Menu
-
-const div1 = {
-    width: '256px',
-    float: 'left'
+const styles = {
+    logo: {
+        height: '32px',
+        background: 'rgba(255, 255, 255, .2)',
+        margin: '16px'
+    }
 }
 
-class AppSidebar extends React.Component {
+export default class AppSidebar extends React.Component {
+    //此组件的意义就是将数据抽离出来，通过传递数据去渲染
     state = {
-        collapsed: false
+        openKeys: [],
+        selectedKeys: []
     }
 
-    toggleCollapsed = () => {
-        this.setState({
-            collapsed: !this.state.collapsed
-        })
+    componentDidMount() {
+        // debugger
+        console.log(this.props as any)
+        // 防止页面刷新侧边栏又初始化了
+        const pathname = (this.props as any).location.pathname
+        //获取当前所在的目录层级
+        const rank = pathname.split('/')
+        switch (rank.length) {
+            case 2: //一级目录
+                this.setState({
+                    selectedKeys: [pathname]
+                })
+                break
+            case 5: //三级目录，要展开两个subMenu
+                this.setState({
+                    selectedKeys: [pathname],
+                    openKeys: [rank.slice(0, 3).join('/'), rank.slice(0, 4).join('/')]
+                })
+                break
+            default:
+                this.setState({
+                    selectedKeys: [pathname],
+                    openKeys: [pathname.substr(0, pathname.lastIndexOf('/'))]
+                })
+        }
     }
-    render() {
+
+    componentWillReceiveProps(nextProps: any) {
+        // debugger
+        console.log(nextProps)
+        //当点击面包屑导航时，侧边栏要同步响应
+        const pathname = nextProps.location.pathname
+        if ((this.props as any).location.pathname !== pathname) {
+            this.setState({
+                selectedKeys: [pathname]
+            })
+        }
+    }
+
+    onOpenChange = (openKeys: any) => {
+        //此函数的作用只展开当前父级菜单（父级菜单下可能还有子菜单）
+        if (openKeys.length === 0 || openKeys.length === 1) {
+            this.setState({
+                openKeys
+            })
+            return
+        }
+
+        //最新展开的菜单
+        const latestOpenKey = openKeys[openKeys.length - 1]
+        //判断最新展开的菜单是不是父级菜单，若是父级菜单就只展开一个，不是父级菜单就展开父级菜单和当前子菜单
+        //因为我的子菜单的key包含了父级菜单，所以不用像官网的例子单独定义父级菜单数组，然后比较当前菜单在不在父级菜单数组里面。
+        //只适用于3级菜单
+        if (latestOpenKey.includes(openKeys[0])) {
+            this.setState({
+                openKeys
+            })
+        } else {
+            this.setState({
+                openKeys: [latestOpenKey]
+            })
+        }
+    }
+
+    renderMenuItem = ({ key, icon, title } = this.props as any) => {
         return (
-            <div style={div1}>
-                {/* <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-                    {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-                </Button> */}
-                <Menu
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                    theme="dark"
-                    inlineCollapsed={this.state.collapsed}
-                >
-                    <Menu.Item key="1" icon={<PieChartOutlined />}>
-                        Option 1
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<DesktopOutlined />}>
-                        Option 2
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<ContainerOutlined />}>
-                        Option 3
-                    </Menu.Item>
-                    <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                        <Menu.Item key="5">Option 5</Menu.Item>
-                        <Menu.Item key="6">Option 6</Menu.Item>
-                        <Menu.Item key="7">Option 7</Menu.Item>
-                        <Menu.Item key="8">Option 8</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-                        <Menu.Item key="9">Option 9</Menu.Item>
-                        <Menu.Item key="10">Option 10</Menu.Item>
-                        <SubMenu key="sub3" title="Submenu">
-                            <Menu.Item key="11">Option 11</Menu.Item>
-                            <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
-                    </SubMenu>
-                </Menu>
-            </div>
+            <Menu.Item key={key}>
+                <Link to={key}>
+                    {icon && <DownOutlined type={icon} />}
+                    <span>{title}</span>
+                </Link>
+            </Menu.Item>
+        )
+    }
+    renderSubMenu = ({ key, icon, title, children } = this.props as any) => {
+        return (
+            <Menu.SubMenu
+                key={key}
+                title={
+                    <span>
+                        {icon && <DownOutlined type={icon} />}
+                        <span>{title}</span>
+                    </span>
+                }
+            >
+                {children &&
+                    children.map((item: any) => {
+                        return item.children && item.children.length > 0
+                            ? this.renderSubMenu(item)
+                            : this.renderMenuItem(item)
+                    })}
+            </Menu.SubMenu>
+        )
+    }
+
+    render() {
+        const { menus } = this.props as any
+        const { openKeys, selectedKeys } = this.state
+        console.log('props', this.props)
+        // debugger
+        return (
+            <Menu
+                onOpenChange={this.onOpenChange}
+                onClick={({ key }) => this.setState({ selectedKeys: [key] })}
+                openKeys={openKeys}
+                selectedKeys={selectedKeys}
+                theme={(this.props as any).theme ? (this.props as any).theme : 'dark'}
+                mode="inline"
+            >
+                {(this.props as any).menus &&
+                    (this.props as any).menus.map((item: any) => {
+                        return item.children && item.children.length > 0
+                            ? this.renderSubMenu(item)
+                            : this.renderMenuItem(item)
+                    })}
+            </Menu>
         )
     }
 }
-export default React.memo(AppSidebar)

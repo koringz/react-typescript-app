@@ -10,7 +10,7 @@ import { Layout } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
 const Dash: React.FC = (props): React.ReactElement => {
-    console.log(props)
+    // console.log(props)
     return (
         <div>
             <Layout>
