@@ -41,8 +41,16 @@ export const SetRoutes = [
         needLogin: true,
         title: '主页',
         icon: 'bars',
-        component: LoadComponent(() => import('@/pages/Home/index.tsx')),
+        // component: LoadComponent(() => import('@/pages/Home/index.tsx')),
         children: [
+            {
+                key: '/home/main',
+                name: 'main',
+                needLogin: true,
+                title: '主页',
+                icon: 'bars',
+                component: LoadComponent(() => import('@/pages/Home/index.tsx')),
+            },
             {
                 key: '/home/sub',
                 name: 'home-sub',
@@ -51,9 +59,9 @@ export const SetRoutes = [
                 icon: 'bars',
                 children: [
                     {
-                        title: '孙子菜单-one',
-                        name: 'home-sub-one',
                         key: '/home/sub/one',
+                        name: 'home-sub-one',
+                        title: '孙子菜单-one',
                         component: LoadComponent(() => import('@/pages/Dash/index.tsx'))
                     },
                     {
@@ -108,7 +116,7 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
     return acceptRouteMap
 }
 
-const permission = ['/table', '/home', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
+const permission = ['/table', '/home', '/home/main', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
 const PermissionRoutes = filterRouteMap(permission, SetRoutes)
 console.log('PermissionRoutes=',PermissionRoutes)
 
