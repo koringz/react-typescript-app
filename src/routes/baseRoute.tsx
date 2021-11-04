@@ -19,14 +19,6 @@ const LoadComponent = <T extends React.ComponentType<any>>(
 
 export const SetRoutes = [
     {
-        key: '/table',
-        name: 'table',
-        needLogin: true,
-        title: '表格',
-        icon: 'bars',
-        component: LoadComponent(() => import('@/pages/Table/index.tsx'))
-    },
-    {
         key: '/',
         name: '/',
         needLogin: true,
@@ -38,7 +30,7 @@ export const SetRoutes = [
         key: '/home',
         name: 'home',
         needLogin: true,
-        title: '主页',
+        title: '首页',
         icon: 'bars',
         // component: LoadComponent(() => import('@/pages/Home/index.tsx')),
         children: [
@@ -74,6 +66,14 @@ export const SetRoutes = [
         ]
     },
     {
+        key: '/table',
+        name: 'table',
+        needLogin: true,
+        title: '表格',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/pages/Table/index.tsx'))
+    },
+    {
         key: '/404',
         name: '404',
         needLogin: true,
@@ -95,7 +95,7 @@ export const SetRoutes = [
         needLogin: false,
         title: '关于',
         icon: 'bars',
-        component: LoadComponent(() => import('@/pages/Login/index.tsx'))
+        component: LoadComponent(() => import('@/pages/About/index.tsx'))
     }
 ]
 

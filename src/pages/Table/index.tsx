@@ -20,7 +20,7 @@ class Table extends React.Component {
                     <Button type="primary">Antd Button</Button>
                 </div>
                 <div>
-                    <Link to="./home">home</Link>
+                    <Link to="./home/main">home</Link>
                 </div>
             </div>
         )
