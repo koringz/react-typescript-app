@@ -5,7 +5,6 @@
  * icon 访问路由设置 menu 菜单icon
  */
 import React from 'react'
-import { Switch } from 'react-router-dom'
 
 const LoadComponent = <T extends React.ComponentType<any>>(
     factory: () => Promise<{

@@ -13,7 +13,8 @@ import {
     PieChartOutlined,
     DesktopOutlined,
     ContainerOutlined,
-    MailOutlined
+    MailOutlined,
+    LinkOutlined
 } from '@ant-design/icons'
 import { DownOutlined } from '@ant-design/icons'
 
@@ -100,7 +101,7 @@ export default class AppSidebar extends React.Component {
         return (
             <Menu.Item key={key}>
                 <Link to={key}>
-                    {icon && <DownOutlined type={icon} />}
+                    {icon && <LinkOutlined type={icon} />}
                     <span>{title}</span>
                 </Link>
             </Menu.Item>
@@ -112,7 +113,7 @@ export default class AppSidebar extends React.Component {
                 key={key}
                 title={
                     <span>
-                        {icon && <DownOutlined type={icon} />}
+                        {icon && <LinkOutlined type={icon} />}
                         <span>{title}</span>
                     </span>
                 }
