@@ -138,7 +138,7 @@ export default class AppSidebar extends React.Component {
                 onClick={({ key }) => this.setState({ selectedKeys: [key] })}
                 openKeys={openKeys}
                 selectedKeys={selectedKeys}
-                theme={(this.props as any).theme ? (this.props as any).theme : 'dark'}
+                theme={(this.props as any).theme ? (this.props as any).theme : 'light'}
                 mode="inline"
             >
                 {(this.props as any).menus &&

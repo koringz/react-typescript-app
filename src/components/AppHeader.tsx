@@ -6,8 +6,10 @@
 import React, { useState } from 'react'
 // import { NavLink } from 'react-router-dom';
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
+import './../styles/header.scss'
 
 const { Header } = Layout
+
 
 const div2 = {
     display: 'flex',
@@ -19,7 +21,7 @@ const AppHeader = (props: any) => {
     // console.log('props===', props)
 
     return (
-        <div className="header-container">
+        <div className="header-container rc-header">
             <Header className="header">
                 <div className="section">
                     <ul style={div2}>
@@ -49,7 +51,5 @@ const AppHeader = (props: any) => {
         </div>
     )
 }
-
-
 
 export default AppHeader

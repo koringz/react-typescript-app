@@ -13,7 +13,8 @@ import './index.scss'
 const div1 = {
     backgroundColor: '#eee', //驼峰法
     width: 'calc(100% - 256px)',
-    float: 'right'
+    float: 'right',
+    padding: '8px 12px'
 }
 
 const DefaultLayout = (props: any) => {
@@ -22,7 +23,7 @@ const DefaultLayout = (props: any) => {
         <Layout style={{ height: '100%' }}>
             <AppHeader />
             <div className="wrapper">
-                <div style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', float: 'left', width: '256px' }}>
+                <div style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', float: 'left', width: '256px', background: '#fff' }}>
                     <Switch>
                         <AppSidebar menus={PermissionRoutes} />
                     </Switch>

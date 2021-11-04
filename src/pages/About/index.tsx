@@ -12,13 +12,11 @@ const { Header, Footer, Sider, Content } = Layout
 class About extends React.Component {
     render() {
         return (
-            <div>
-                <Layout>
-                    <Header>About 关于</Header>
-                    <Content>About 关于</Content>
-                    <Footer>About 关于</Footer>
-                </Layout>
-            </div>
+            <Layout>
+                <Header>About 关于</Header>
+                <Content>About 关于</Content>
+                <Footer>About 关于</Footer>
+            </Layout>
         )
     }
 }

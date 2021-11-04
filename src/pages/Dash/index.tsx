@@ -12,14 +12,12 @@ const { Header, Footer, Sider, Content } = Layout
 const Dash: React.FC = (props): React.ReactElement => {
     // console.log(props)
     return (
-        <div>
-            <Layout>
-                <Content>Dash 12312312</Content>
-                <Content>Dash 12312312</Content>
-                <Content>Dash 12312312</Content>
-                <Content>Dash 12312312</Content>
-            </Layout>
-        </div>
+        <Layout>
+            <Content>Dash 12312312</Content>
+            <Content>Dash 12312312</Content>
+            <Content>Dash 12312312</Content>
+            <Content>Dash 12312312</Content>
+        </Layout>
     )
 }
 
