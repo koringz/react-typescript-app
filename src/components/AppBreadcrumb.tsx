@@ -1,12 +1,8 @@
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
-import withBreadcrumbs from 'react-router-breadcrumbs-hoc'
 import { Breadcrumb, Menu } from 'antd'
-// import { SetRoutes } from '@/routes/baseRoute'
-// import { flattenRoutes } from '@/utils/flatten'
 
-// const allRoutes = flattenRoutes(SetRoutes)
-// console.log(allRoutes)
+import '@/styles/appBreadcrumb.scss'
 
 interface Props {
     breadcrumbs: any[]
@@ -37,7 +33,7 @@ const AppBreadcrumb = () => {
     const history = useHistory()
     console.log(history)
     return (
-        <Breadcrumb>
+        <Breadcrumb className="rc-Breadcrumb">
             <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
             <Breadcrumb.Item>
                 <a href="">Component</a>

@@ -7,14 +7,17 @@ import React, { useState } from 'react'
 // import { NavLink } from 'react-router-dom';
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
 import './../styles/header.scss'
+import avatar from "@/assets/img/20211104153431.jpg"
+
 
 const { Header } = Layout
 
 
-const div2 = {
+const menuSty = {
     display: 'flex',
     flex: 1
 }
+
 
 const AppHeader = (props: any) => {
     const { curActive } = props
@@ -23,8 +26,11 @@ const AppHeader = (props: any) => {
     return (
         <div className="header-container rc-header">
             <Header className="header">
+                <span className="avator-icon">
+                    <img src={avatar} alt=""/>
+                </span>
                 <div className="section">
-                    <ul style={div2}>
+                    <ul style={menuSty}>
                         <li>
                             <a href="/" rel="noopener noreferrer" className={curActive}>
                                 首页

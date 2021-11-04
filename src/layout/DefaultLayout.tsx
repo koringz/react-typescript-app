@@ -8,7 +8,7 @@ const { Sider, Header, Content, Footer } = Layout
 import { AppSidebar, AppFooter, AppHeader, AppBreadcrumb } from '../components/index'
 import ComponentWillLoad from '@/routes/index'
 import PermissionRoutes from '@/routes/baseRoute'
-import './index.scss'
+import '@/styles/defaultLayout.scss'
 
 const div1 = {
     backgroundColor: '#eee', //驼峰法
@@ -31,7 +31,7 @@ const DefaultLayout = (props: any) => {
                 <div className="archive" style={div1}>
                     <AppBreadcrumb />
                     <TransitionGroup className="layout__route">
-                        <CSSTransition key={location.pathname} classNames="layout__route" timeout={300}>
+                        <CSSTransition key={location.pathname} classNames="layout__transition" timeout={300}>
                             <Switch>
                                 {/* <SiderNav menus={setRoutes}/> */}
                                 <ComponentWillLoad config={PermissionRoutes} />
