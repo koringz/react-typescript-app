@@ -7,7 +7,7 @@ import * as React from 'react'
 import DocumentTitle from 'react-document-title'
 import { Button } from 'antd'
 // import Header from '@/components/Header'
-import AppFooter from '@/components/AppFooter'
+import AppFooter from '@/layout/AppFooter'
 
 const styles: any = {
     width: '100%',

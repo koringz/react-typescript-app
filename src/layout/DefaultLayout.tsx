@@ -5,7 +5,7 @@ import { Layout } from 'antd'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const { Sider, Header, Content, Footer } = Layout
 
-import { AppSidebar, AppFooter, AppHeader, AppBreadcrumb } from '../components/index'
+import { AppSidebar, AppFooter, AppHeader, AppBreadcrumb } from './index'
 import ComponentWillLoad from '@/routes/index'
 import PermissionRoutes from '@/routes/baseRoute'
 import '@/styles/defaultLayout.scss'

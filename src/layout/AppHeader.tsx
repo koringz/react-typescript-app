@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 // import { NavLink } from 'react-router-dom';
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
-import './../styles/header.scss'
+import '@/styles/header.scss'
 import avatar from "@/assets/img/20211104153431.jpg"
 
 
