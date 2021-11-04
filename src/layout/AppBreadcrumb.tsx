@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Breadcrumb, Menu } from 'antd'
 
-import '@/styles/appBreadcrumb.scss'
+import '@/layout/AppBreadcrumb.scss'
 
 interface Props {
     breadcrumbs: any[]

@@ -1,30 +1,113 @@
-/*  描述: 表格
- *  作者: koringz
- *  日期: 2021-10-30
- */
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { Tabs } from 'antd'
+import History from 'umi'
+import { stringify } from 'qs'
+import { Page } from 'components'
+import List from './components/List'
 
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from '_antd@4.16.13@antd'
-import './index.scss'
-import './index.less'
+console.log(History)
 
-class Table extends React.Component {
-    render() {
-        return (
-            <div>
-                {/* something */}koringz 123123
-                <div className="table">table 12312321312</div>
-                <div>12313</div>
-                <div>
-                    <Button type="primary">Antd Button</Button>
-                </div>
-                <div>
-                    <Link to="./home/main">home</Link>
-                </div>
-            </div>
-        )
+const { TabPane } = Tabs
+
+const EnumPostStatus = {
+  UNPUBLISH: 1,
+  PUBLISHED: 2,
+}
+
+class Table extends PureComponent {
+  handleTabClick = (key: any) => {
+    const { pathname } = (this.props as any).location
+
+    History.push({
+      pathname,
+      search: stringify({
+        status: key,
+      }),
+    })
+  }
+
+  componentDidMount() {
+      debugger
+    const { post, loading, location } = this.props as any
+    const { list, pagination } = post
+    const { query, pathname } = location
+    const status = 1
+    History.push({
+        pathname,
+        search: stringify({
+          ...query,
+          status
+        }),
+      })
+  }
+
+  get listProps() {
+    debugger
+    const { post, loading, location } = this.props as any
+    const { list, pagination } = post
+    const { query, pathname } = location
+
+    return {
+      pagination,
+      dataSource: list,
+      loading: loading.effects['post/query'],
+      onChange(page: any) {
+        History.push({
+          pathname,
+          search: stringify({
+            ...query,
+            page: page.current,
+            pageSize: page.pageSize,
+          }),
+        })
+      },
     }
+  }
+
+  render() {
+    debugger
+    const { location } = this.props as any
+    const { query } = location
+
+    return (
+      <Page inner>
+        <Tabs
+          activeKey={
+             String(EnumPostStatus.UNPUBLISH)
+          }
+          onTabClick={this.handleTabClick}
+        >
+          <TabPane
+            tab={`Publised`}
+            key={String(EnumPostStatus.PUBLISHED)}
+          >
+            <List {...this.listProps} />
+          </TabPane>
+          <TabPane
+            tab={`Unpublished`}
+            key={String(EnumPostStatus.UNPUBLISH)}
+          >
+            <List {...this.listProps} />
+          </TabPane>
+        </Tabs>
+      </Page>
+    )
+  }
+}
+
+interface Table {
+    post: any
+    loading: any
+    location: any
+    dispatch: any
+}
+
+Table.propTypes  = {
+  post: PropTypes.object,
+  loading: PropTypes.object,
+  location: PropTypes.object,
+  dispatch: PropTypes.func,
 }
 
 export default Table

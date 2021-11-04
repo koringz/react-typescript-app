@@ -8,9 +8,10 @@ const { Sider, Header, Content, Footer } = Layout
 import { AppSidebar, AppFooter, AppHeader, AppBreadcrumb } from './index'
 import ComponentWillLoad from '@/routes/index'
 import PermissionRoutes from '@/routes/baseRoute'
-import '@/styles/defaultLayout.scss'
 
-const div1 = {
+import '@/layout/DefaultLayout.scss'
+
+const archiveSty = {
     backgroundColor: '#eee', //驼峰法
     width: 'calc(100% - 256px)',
     float: 'right',
@@ -20,7 +21,7 @@ const div1 = {
 const DefaultLayout = (props: any) => {
     // console.log(props)
     return (
-        <Layout style={{ height: '100%' }}>
+        <Layout style={{ height: '100%' }} className="rc-DefaultLayout">
             <AppHeader />
             <div className="wrapper">
                 <div style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', float: 'left', width: '256px', background: '#fff' }}>
@@ -28,7 +29,7 @@ const DefaultLayout = (props: any) => {
                         <AppSidebar menus={PermissionRoutes} />
                     </Switch>
                 </div>
-                <div className="archive" style={div1}>
+                <div className="archive" style={archiveSty}>
                     <AppBreadcrumb />
                     <TransitionGroup className="layout__route">
                         <CSSTransition key={location.pathname} classNames="layout__transition" timeout={300}>

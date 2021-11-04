@@ -14,7 +14,9 @@ export const Load = (Comp: any, routeProps: any) => {
     if (!Com) return null
     return (
         <Suspense fallback={<div className="define-suspense">loading</div>}>
-            <Com routes={Comp} />
+            <Switch>
+                <Com routes={Comp} />
+            </Switch>
         </Suspense>
     )
 }
@@ -78,7 +80,11 @@ class PermissionAuth extends React.Component {
                             </Switch>
                         )
                     } else {
-                        return <Route path={pathname} render={(routeProps: any) => <Load {...targetRouterConfig} routeProps={routeProps} />} />
+                        return  (
+                                <Switch>
+                                    <Route path={pathname} render={(routeProps: any) => <Load {...targetRouterConfig} routeProps={routeProps} />} />
+                                </Switch>
+                        )
                     }
                 } else {
                     // 如果路由不合法,重定向到 404 页面
