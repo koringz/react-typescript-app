@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Table, Avatar } from 'antd'
-import { Ellipsis } from 'components'
-import styles from './List.less'
+import styles from './List.scss'
 
 class List extends PureComponent {
     render() {
@@ -15,11 +14,7 @@ class List extends PureComponent {
             {
                 title: `Title`,
                 dataIndex: 'title',
-                render: (text: any) => (
-                    <Ellipsis tooltip length={30}>
-                        {text}
-                    </Ellipsis>
-                )
+                render: (text: any) => ({ text })
             },
             {
                 title: `Author`,
@@ -55,14 +50,11 @@ class List extends PureComponent {
             <Table
                 {...tableProps}
                 pagination={{
-                    ...tableProps.pagination,
                     showTotal: total => `Total ${total} Items`
                 }}
                 bordered
                 scroll={{ x: 1200 }}
-                className={styles.table}
                 columns={columns}
-                simple
                 rowKey={record => record.id}
             />
         )

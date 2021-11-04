@@ -1,22 +1,10 @@
 import React from 'react'
 import 'animate.css'
 
-class LoadingDemo extends React.Component {
-    render() {
-        return (
-            <div style={styles.bg}>
-                <h3 style={styles.loadingTitle} className="animated bounceInLeft">
-                    加载动画
-                </h3>
-            </div>
-        )
-    }
-}
-
 const styles = {
     bg: {
         position: 'absolute',
-        top: 0,
+        top: 64,
         left: 0,
         width: '100%',
         height: 'calc(100vh - 64px)',
@@ -33,4 +21,17 @@ const styles = {
         fontSize: 20
     }
 }
+
+class LoadingDemo extends React.Component {
+    render() {
+        return (
+            <div style={styles.bg}>
+                <h3 style={styles.loadingTitle} className="animated bounceInLeft">
+                    加载中......
+                </h3>
+            </div>
+        )
+    }
+}
+
 export default LoadingDemo

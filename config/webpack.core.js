@@ -76,7 +76,7 @@ const coreConfig = env => {
                             loader: 'less-loader',
                             options: {
                                 lessOptions: {
-                                    // strictMath: true,
+                                    strictMath: true
                                 }
                             }
                         }

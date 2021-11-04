@@ -5,18 +5,12 @@
 
 import * as React from 'react'
 
-const footerSty = {
-    clear: 'both',
-    float: 'left',
-    marginLeft: 0,
-    marginRight: 0,
-    width: '100%'
-}
+import '@/layout/AppFooter.scss'
 
 export default class AppFooter extends React.Component {
     render() {
         return (
-            <div className="footer-container" style={footerSty}>
+            <div className="footer-container">
                 <div className="footer">
                     <div className="copyright">Copyright@2021-2025 11331144***</div>
                 </div>

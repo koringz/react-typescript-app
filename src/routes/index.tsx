@@ -1,11 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import {
-    BrowserRouter as Router,
-    Redirect,
-    Switch,
-    Route
-} from 'react-router-dom'
-import { deepFilterMap } from "@/utils/deep" 
+import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom'
+import LoadingDemo from '@/components/loadingDemo'
+import { deepFilterMap } from '@/utils/deepFilter'
 
 export const Load = (Comp: any, routeProps: any) => {
     // console.log(Comp, routeProps)
@@ -13,7 +9,7 @@ export const Load = (Comp: any, routeProps: any) => {
     const Com = Comp.component
     if (!Com) return null
     return (
-        <Suspense fallback={<div className="define-suspense">loading</div>}>
+        <Suspense fallback={<LoadingDemo />}>
             <Switch>
                 <Com routes={Comp} />
             </Switch>
@@ -47,7 +43,7 @@ class PermissionAuth extends React.Component {
         // console.log(isLogin, pathname, config)
 
         // 是否存在用户搜寻路由目标
-        const getDeepFilterMap = deepFilterMap([pathname],config)
+        const getDeepFilterMap = deepFilterMap([pathname], config)
         const targetRouterConfig = getDeepFilterMap.length ? getDeepFilterMap[0] : null
 
         // 访问默认无权限路由
@@ -76,14 +72,22 @@ class PermissionAuth extends React.Component {
                         return (
                             <Switch>
                                 <Redirect from={targetRouterConfig.path} to={RedirectPath} />
-                                <Route path={RedirectPath} render={(routeProps: any) => <Load {...ChildComponent} routeProps={routeProps} />} />
+                                <Route
+                                    path={RedirectPath}
+                                    render={(routeProps: any) => <Load {...ChildComponent} routeProps={routeProps} />}
+                                />
                             </Switch>
                         )
                     } else {
-                        return  (
-                                <Switch>
-                                    <Route path={pathname} render={(routeProps: any) => <Load {...targetRouterConfig} routeProps={routeProps} />} />
-                                </Switch>
+                        return (
+                            <Switch>
+                                <Route
+                                    path={pathname}
+                                    render={(routeProps: any) => (
+                                        <Load {...targetRouterConfig} routeProps={routeProps} />
+                                    )}
+                                />
+                            </Switch>
                         )
                     }
                 } else {

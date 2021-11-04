@@ -1,16 +1,10 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import {
-    BrowserRouter as Router,
-    HashRouter,
-    Redirect,
-    Switch,
-    Route,
-} from 'react-router-dom'
+import { BrowserRouter as Router, HashRouter, Redirect, Switch, Route } from 'react-router-dom'
 import { hot } from 'react-hot-loader/root'
 
 import { Load } from '@/routes/index'
 import { SetRoutes } from '@/routes/baseRoute'
-import DefaultLayout from '@/layout/DefaultLayout'
+import { DefaultLayout } from '@/layout'
 
 const Login = SetRoutes.find((v: any) => '/login' === v.key) as any
 const Nofound = SetRoutes.find((v: any) => '/404' === v.key) as any

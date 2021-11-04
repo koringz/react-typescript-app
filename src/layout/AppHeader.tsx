@@ -1,23 +1,21 @@
-/*  描述: 底部 header 模板
+/*  描述: 顶部 header 模板
  *  作者: koringz
  *  日期: 2021-10-30
  */
 
 import React, { useState } from 'react'
 // import { NavLink } from 'react-router-dom';
-import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
+import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message, Avatar } from 'antd'
 import '@/layout/AppHeader.scss'
 
-import avatar from "@/assets/img/20211104153431.jpg"
+import avatar from '@/assets/img/20211104153431.jpg'
 
 const { Header } = Layout
-
 
 const menuSty = {
     display: 'flex',
     flex: 1
 }
-
 
 const AppHeader = (props: any) => {
     const { curActive } = props
@@ -27,7 +25,7 @@ const AppHeader = (props: any) => {
         <div className="header-container rc-header">
             <Header className="header">
                 <span className="avator-icon">
-                    <img src={avatar} alt=""/>
+                    <Avatar src={avatar} alt="" />
                 </span>
                 <div className="section">
                     <ul style={menuSty}>

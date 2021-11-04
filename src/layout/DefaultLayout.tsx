@@ -1,3 +1,8 @@
+/*  描述: 默认 布局 模板
+ *  作者: koringz
+ *  日期: 2021-11-4
+ */
+
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
@@ -12,7 +17,7 @@ import PermissionRoutes from '@/routes/baseRoute'
 import '@/layout/DefaultLayout.scss'
 
 const archiveSty = {
-    backgroundColor: '#eee', //驼峰法
+    backgroundColor: '#eee',
     width: 'calc(100% - 256px)',
     float: 'right',
     padding: '8px 12px'
@@ -24,7 +29,15 @@ const DefaultLayout = (props: any) => {
         <Layout style={{ height: '100%' }} className="rc-DefaultLayout">
             <AppHeader />
             <div className="wrapper">
-                <div style={{ height: 'calc(100vh - 64px)', overflowY: 'auto', float: 'left', width: '256px', background: '#fff' }}>
+                <div
+                    style={{
+                        height: 'calc(100vh - 64px)',
+                        overflowY: 'auto',
+                        float: 'left',
+                        width: '256px',
+                        background: '#fff'
+                    }}
+                >
                     <Switch>
                         <AppSidebar menus={PermissionRoutes} />
                     </Switch>
