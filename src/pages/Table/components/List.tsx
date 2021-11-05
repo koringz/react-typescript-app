@@ -7,41 +7,41 @@ class List extends PureComponent {
         const { ...tableProps } = this.props
         const columns = [
             {
-                title: `Image`,
+                title: `图片`,
                 dataIndex: 'image',
                 render: (text: any) => <Avatar shape="square" src={text} />
             },
             {
-                title: `Title`,
+                title: `标题`,
                 dataIndex: 'title',
                 render: (text: any) => ({ text })
             },
             {
-                title: `Author`,
+                title: `作者`,
                 dataIndex: 'author'
             },
             {
-                title: `Categories`,
+                title: `分类`,
                 dataIndex: 'categories'
             },
             {
-                title: `Tags`,
+                title: `标签`,
                 dataIndex: 'tags'
             },
             {
-                title: `Visibility`,
+                title: `显示`,
                 dataIndex: 'visibility'
             },
             {
-                title: `Comments`,
+                title: `提交`,
                 dataIndex: 'comments'
             },
             {
-                title: `Views`,
+                title: `展示`,
                 dataIndex: 'views'
             },
             {
-                title: `Publish Date`,
+                title: `时间`,
                 dataIndex: 'date'
             }
         ]

@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Tabs, Layout } from 'antd'
 import { stringify } from 'qs'
+
 import List from './components/List'
 
 const { Content } = Layout
 
 const { TabPane } = Tabs
+
 
 const EnumPostStatus = {
     UNPUBLISH: 1,
@@ -15,60 +17,89 @@ const EnumPostStatus = {
 
 class Table extends PureComponent {
     handleTabClick = (key: any) => {
-        const { pathname } = (this.props as any).location
+        // console.log(this.props)
+        const { location, history } = this.props as any
+        const { pathname } = location
 
-        // History.push({
-        //     pathname,
-        //     search: stringify({
-        //         status: key
-        //     })
-        // })
+        history.push({
+            pathname,
+            search: '?'+stringify({
+              status: key,
+            }),
+        })
+    }
+
+    componentWillMount () {
+        debugger
+        console.log(this.props)
     }
 
     componentDidMount() {
-        // debugger
-        const { post, loading, location } = this.props as any
-        // const { list, pagination } = post
-        const { query, pathname } = location
-        const status = 1
-        // History.push({
+        debugger
+        const { location, history } = this.props as any
+        const { pathname } = location
+        
+        // const status = 1
+        // history.push({
         //     pathname,
-        //     search: stringify({
-        //         ...query,
-        //         status
-        //     })
+        //     search: '?'+stringify({
+        //       status: status,
+        //     }),
         // })
     }
 
+    componentDidUpdate () {
+        debugger
+        console.log(this.props)
+    }
+    
+    componentWillReceiveProps() {
+        debugger
+        console.log(this.props)
+    }
+
+    componentWillUnmount() {
+        debugger
+        console.log(this.props)
+    }
+
+    
+
     get listProps() {
-        // debugger
-        const { post, loading, location } = this.props as any
-        // const { list, pagination } = post
-        const { query, pathname } = location
+        debugger
+        const { location } = this.props as any
+        const { search, pathname } = location
+        console.log('location====',location)
 
         return {
             onChange(page: any) {
-                // History.push({
+                // history.push({
                 //     pathname,
-                //     search: stringify({
-                //         ...query,
-                //         page: page.current,
-                //         pageSize: page.pageSize
+                //     search: '?'+stringify({
+                //         ...search,
                 //     })
                 // })
             }
         }
     }
 
-    render() {
-        // debugger
+    public takeUrlParams (name: string) {
         const { location } = this.props as any
-        const { query } = location
+        const { search } = location
+        const paramsString = search.substring(1)
+        const searchParams = new URLSearchParams(paramsString)
+        const value = searchParams.get(name)
+        return value
+    }
 
+    render() {
         return (
             <Layout>
-                <Content>
-                    <Tabs activeKey={String(EnumPostStatus.UNPUBLISH)} onTabClick={this.handleTabClick}>
+                <Content ref="table">
+                    <Tabs activeKey={
+                        this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
+                        ? String(EnumPostStatus.UNPUBLISH)
+                        : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
                         <TabPane tab={`公用`} key={String(EnumPostStatus.PUBLISHED)}>
                             <List {...this.listProps} />
                         </TabPane>

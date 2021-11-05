@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Redirect, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Switch, Route, withRouter } from 'react-router-dom'
 import LoadingDemo from '@/components/loadingDemo'
 import { deepFilterMap } from '@/utils/deepFilter'
 
@@ -8,10 +8,11 @@ export const Load = (Comp: any, routeProps: any) => {
     // component 未必选
     const Com = Comp.component
     if (!Com) return null
+    const ComRoutes = withRouter(Com)
     return (
         <Suspense fallback={<LoadingDemo />}>
             <Switch>
-                <Com routes={Comp} />
+                <ComRoutes/>
             </Switch>
         </Suspense>
     )

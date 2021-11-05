@@ -86,9 +86,9 @@ for (let i = 0; i < 20; i += 1) {
 }
 
 const Home: React.FC = (props): React.ReactElement => {
-    const { location, history, routes } = props as any
-    const { children } = routes
-    console.log('home============', routes.children)
+    const { location, history } = props as any
+    // const { children } = routes
+    console.log('home============', props)
     return (
         <Layout>
             <Content>
