@@ -10,17 +10,22 @@ import {
     MailOutlined,
     LinkOutlined
 } from '@ant-design/icons'
+import { FormInstance } from 'antd/es/form';
 
 const FormItem = Form.Item
 
 //form代码，没有什么改进，把下面的提交按钮去掉就行
-class WrappedNormalLoginForm extends Component {
-    formRef = React.createRef()
+class WrappedNormalLoginForm extends React.PureComponent {
+    formRef = React.createRef<FormInstance>();
+    
     state = { visible: false }
 
+    constructor(props: any) {
+        super(props)
+    }
     onfinalish = () => {
-        const current = this.formRef.current as any
-        current.validate().then((value: any) => {
+        (this.formRef.current as any).validateFields().then((value: any) => {
+            debugger
             if (value) {
                 console.log('value==', value)
             }
@@ -33,15 +38,14 @@ class WrappedNormalLoginForm extends Component {
     onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo)
     }
-    constructor(props: any) {
-        super(props)
-        // this.formRef = React.createRef();
+    onFill = (errorInfo: any) => {
+        (this.formRef.current as any).setFieldsValue({
+            note: 'Hello world!',
+            gender: 'male',
+          });
     }
 
     render() {
-        // const getform = (this.props as any)
-        // console.log(getform)
-        // const { getFieldDecorator } = (this.props as any)
         return (
             <>
                 <Button type="primary" onClick={() => this.setState({ visible: true })}>
@@ -71,6 +75,7 @@ class WrappedNormalLoginForm extends Component {
                 >
                     <Form
                         name="basic"
+                        ref={this.formRef}
                         labelCol={{ span: 8 }}
                         wrapperCol={{ span: 16 }}
                         initialValues={{ remember: true }}
@@ -101,6 +106,9 @@ class WrappedNormalLoginForm extends Component {
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                             <Button type="primary" htmlType="submit">
                                 提交
+                            </Button>
+                            <Button type="link" htmlType="button" onClick={this.onFill}>
+                                填充表单
                             </Button>
                         </Form.Item>
                     </Form>
