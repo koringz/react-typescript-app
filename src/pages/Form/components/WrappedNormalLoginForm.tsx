@@ -65,7 +65,7 @@ class WrappedNormalLoginForm extends Component {
                     }}
                     footer={[
                         <Button type="primary" onClick={this.onfinalish} key="submit">
-                            提交
+                            确定
                         </Button>
                     ]}
                 >
@@ -79,7 +79,7 @@ class WrappedNormalLoginForm extends Component {
                         autoComplete="off"
                     >
                         <Form.Item
-                            label="Username"
+                            label="用户名"
                             name="username"
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
@@ -87,7 +87,7 @@ class WrappedNormalLoginForm extends Component {
                         </Form.Item>
 
                         <Form.Item
-                            label="Password"
+                            label="密码"
                             name="password"
                             rules={[{ required: true, message: 'Please input your password!' }]}
                         >
@@ -95,12 +95,12 @@ class WrappedNormalLoginForm extends Component {
                         </Form.Item>
 
                         <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox>记住我</Checkbox>
                         </Form.Item>
 
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                             <Button type="primary" htmlType="submit">
-                                Submit
+                                提交
                             </Button>
                         </Form.Item>
                     </Form>
