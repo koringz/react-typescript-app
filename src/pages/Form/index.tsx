@@ -9,6 +9,7 @@ import { Tabs, Layout } from 'antd'
 import { stringify } from 'qs'
 
 import List from './components/List'
+import WrappedNormalLoginForm from './components/WrappedNormalLoginForm'
 
 const { Content } = Layout
 
@@ -32,35 +33,6 @@ class Table extends PureComponent {
               status: key,
             }),
         })
-    }
-
-    componentWillMount () {
-        // console.log('componentWillMount==',this.props)
-    }
-
-    componentDidMount() {
-        const { location, history } = this.props as any
-        const { pathname } = location
-        
-        // const status = 1
-        // history.push({
-        //     pathname,
-        //     search: '?'+stringify({
-        //       status: status,
-        //     }),
-        // })
-    }
-
-    componentDidUpdate () {
-        // console.log(this.props)
-    }
-
-    componentWillReceiveProps() {
-        // console.log('componentWillReceiveProps==',this.props)
-    }
-
-    componentWillUnmount() {
-        // console.log('componentWillUnmount==',this.props)
     }
 
     get listProps() {
@@ -92,8 +64,10 @@ class Table extends PureComponent {
     render() {
         return (
             <Layout>
-                <Content ref="table">
-                    <Tabs activeKey={
+                <Content >
+                    button
+                    <WrappedNormalLoginForm />
+                    {/* <Tabs activeKey={
                         this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
                         ? String(EnumPostStatus.UNPUBLISH)
                         : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
@@ -103,7 +77,7 @@ class Table extends PureComponent {
                         <TabPane tab={`非公用`} key={String(EnumPostStatus.UNPUBLISH)}>
                             <List {...this.listProps} />
                         </TabPane>
-                    </Tabs>
+                    </Tabs> */}
                 </Content>
             </Layout>
         )

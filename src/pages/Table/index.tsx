@@ -34,9 +34,9 @@ class Table extends PureComponent {
         })
     }
 
-    componentWillMount () {
-        // console.log('componentWillMount==',this.props)
-    }
+    // componentWillMount () {
+    //     // console.log('componentWillMount==',this.props)
+    // }
 
     componentDidMount() {
         const { location, history } = this.props as any
@@ -55,9 +55,9 @@ class Table extends PureComponent {
         // console.log(this.props)
     }
 
-    componentWillReceiveProps() {
-        // console.log('componentWillReceiveProps==',this.props)
-    }
+    // componentWillReceiveProps() {
+    //     // console.log('componentWillReceiveProps==',this.props)
+    // }
 
     componentWillUnmount() {
         // console.log('componentWillUnmount==',this.props)
@@ -92,7 +92,7 @@ class Table extends PureComponent {
     render() {
         return (
             <Layout>
-                <Content ref="table">
+                <Content >
                     <Tabs activeKey={
                         this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
                         ? String(EnumPostStatus.UNPUBLISH)
