@@ -35,7 +35,7 @@ export default class AppSidebar extends React.Component {
 
     componentDidMount() {
         // debugger
-        console.log(this.props as any)
+        // console.log(this.props as any)
         // 防止页面刷新侧边栏又初始化了
         const pathname = (this.props as any).location.pathname
         //获取当前所在的目录层级
@@ -62,7 +62,7 @@ export default class AppSidebar extends React.Component {
 
     componentWillReceiveProps(nextProps: any) {
         // debugger
-        console.log(nextProps)
+        // console.log(nextProps)
         //当点击面包屑导航时，侧边栏要同步响应
         const pathname = nextProps.location.pathname
         if ((this.props as any).location.pathname !== pathname) {
@@ -131,7 +131,7 @@ export default class AppSidebar extends React.Component {
     render() {
         const { menus } = this.props as any
         const { openKeys, selectedKeys } = this.state
-        console.log('props', this.props)
+        // console.log('props', this.props)
         // debugger
         return (
             <Menu

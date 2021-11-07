@@ -11,7 +11,7 @@ const mainConfig = env => {
         devServer: {
             // 开启热更新
             hot: true,
-            host: 'localhost',
+            host: '0.0.0.0',
             port: 9099
         },
         plugins: [new webpack.HotModuleReplacementPlugin()]

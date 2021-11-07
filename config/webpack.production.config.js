@@ -7,7 +7,7 @@ const mainConfig = env => {
     return {
         mode: 'production',
         devServer: {
-            host: 'localhost',
+            host: '0.0.0.0',
             port: 9099
         }
     }

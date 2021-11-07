@@ -1,6 +1,6 @@
-/*  描述: 表格
+/*  描述: 表单
  *  作者: koringz
- *  日期: 2021-10-30
+ *  日期: 2021-11-6
  */
 
 import React, { PureComponent } from 'react'
@@ -22,7 +22,7 @@ const EnumPostStatus = {
 
 class Table extends PureComponent {
     handleTabClick = (key: any) => {
-        console.log(this.props)
+        // console.log(this.props)
         const { location, history } = this.props as any
         const { pathname } = location
 

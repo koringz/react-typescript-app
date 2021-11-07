@@ -1,6 +1,16 @@
 .rc-header {
     .header {
         background-color: #0076e6;
+        .header-nav{
+            display: inline-block;
+            margin-left: 200px;
+            li {
+                padding: 0 20px;
+                a {
+                    color: #fff;
+                }
+            }
+        }
     }
     .avator-icon {
         // display: inline-block;
@@ -20,10 +30,4 @@
         }
     }
 
-    li {
-        padding: 0 20px;
-        a {
-            color: #fff;
-        }
-    }
 }

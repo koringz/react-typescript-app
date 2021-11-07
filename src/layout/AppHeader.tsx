@@ -27,7 +27,7 @@ const AppHeader = (props: any) => {
                 <span className="avator-icon">
                     <Avatar src={avatar} alt="" />
                 </span>
-                <div className="section">
+                <div className="header-nav">
                     <ul style={menuSty}>
                         <li>
                             <a href="/" rel="noopener noreferrer" className={curActive}>

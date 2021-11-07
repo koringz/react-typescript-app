@@ -74,6 +74,14 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
+        key: '/form',
+        name: 'form',
+        needLogin: true,
+        title: '表单',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/pages/Form/index.tsx'))
+    },
+    {
         key: '/404',
         name: '404',
         needLogin: true,
@@ -115,8 +123,9 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
     return acceptRouteMap
 }
 
-const permission = ['/table', '/home', '/home/main', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
+// 设置权限访问控制
+const permission = ['/table', '/home', '/form','/home/main', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
 const PermissionRoutes = filterRouteMap(permission, SetRoutes)
-console.log('PermissionRoutes=',PermissionRoutes)
+// console.log('PermissionRoutes=',PermissionRoutes)
 
 export default PermissionRoutes

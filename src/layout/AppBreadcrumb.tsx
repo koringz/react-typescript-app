@@ -36,7 +36,7 @@ const menu = (
 // 通用面包屑
 const AppBreadcrumb = () => {
     const history = useHistory()
-    console.log(history)
+    // console.log(history)
     return (
         <Breadcrumb className="rc-Breadcrumb">
             <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
