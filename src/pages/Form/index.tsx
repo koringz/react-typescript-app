@@ -38,16 +38,9 @@ class Table extends PureComponent {
     get listProps() {
         const { location } = this.props as any
         const { search, pathname } = location
-        // console.log('location====',location)
 
         return {
             onChange(page: any) {
-                // history.push({
-                //     pathname,
-                //     search: '?'+stringify({
-                //         ...search,
-                //     })
-                // })
             }
         }
     }
@@ -65,19 +58,7 @@ class Table extends PureComponent {
         return (
             <Layout>
                 <Content >
-                    button
                     <WrappedNormalLoginForm />
-                    {/* <Tabs activeKey={
-                        this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
-                        ? String(EnumPostStatus.UNPUBLISH)
-                        : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
-                        <TabPane tab={`公用`} key={String(EnumPostStatus.PUBLISHED)}>
-                            <List {...this.listProps} />
-                        </TabPane>
-                        <TabPane tab={`非公用`} key={String(EnumPostStatus.UNPUBLISH)}>
-                            <List {...this.listProps} />
-                        </TabPane>
-                    </Tabs> */}
                 </Content>
             </Layout>
         )

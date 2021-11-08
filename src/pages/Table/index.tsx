@@ -41,14 +41,6 @@ class Table extends PureComponent {
     componentDidMount() {
         const { location, history } = this.props as any
         const { pathname } = location
-        
-        // const status = 1
-        // history.push({
-        //     pathname,
-        //     search: '?'+stringify({
-        //       status: status,
-        //     }),
-        // })
     }
 
     componentDidUpdate () {
@@ -70,12 +62,6 @@ class Table extends PureComponent {
 
         return {
             onChange(page: any) {
-                // history.push({
-                //     pathname,
-                //     search: '?'+stringify({
-                //         ...search,
-                //     })
-                // })
             }
         }
     }

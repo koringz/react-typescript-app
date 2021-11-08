@@ -19,17 +19,17 @@ export const Load = (Comp: any, routeProps: any) => {
 }
 
 /**
- * isLogin 非登陆状态下
- * 访问默认无权限路由
- * needLogin = false
+ * @default isLogin非登陆状态下
+ * @description 访问默认无权限路由
+ * @param needLogin=false
  *
- * isLogin 登陆状态下
- * 路由合法
- * 路由不合法
+ * @default isLogin登陆状态下
+ * @description 路由合法
+ * @description 路由不合法
  *
- * isLogin 非登陆状态下
- * 路由合法
- * 路由不合法
+ * @param isLogin非登陆状态下
+ * @description 路由合法
+ * @description 路由不合法
  */
 class PermissionAuth extends React.Component {
     isLogin() {
