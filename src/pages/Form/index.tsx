@@ -9,7 +9,7 @@ import { Tabs, Layout } from 'antd'
 import { stringify } from 'qs'
 
 import List from './components/List'
-import WrappedNormalLoginForm from './components/WrappedNormalLoginForm'
+import WrappedNormalLoginForm from './components/WrappedNormalForm'
 
 const { Content } = Layout
 

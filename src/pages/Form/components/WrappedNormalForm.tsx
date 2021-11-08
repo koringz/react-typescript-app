@@ -46,7 +46,7 @@ class WrappedNormalLoginForm extends React.PureComponent {
     }
 
     render() {
-        return (
+        return ( 
             <>
                 <Button type="primary" onClick={() => this.setState({ visible: true })}>
                     打开弹出框
