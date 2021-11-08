@@ -25,9 +25,12 @@ class AppHeader extends React.PureComponent {
         this.state = {
             curActive: false
         }
+        this.logup.bind(this)
     }
     logup() {
         sessionStorage.removeItem('token')
+        console.log(this)
+        history.go('/login')
     }
     render() {
         return (
@@ -60,8 +63,15 @@ class AppHeader extends React.PureComponent {
                             </li>
                         </ul>
                     </div>
-                    <div className="header-info-center">
-                        <span className="user-name">用户名 {sessionStorage.token}</span>
+                    <div className="header-info-center fz14">
+                        <span className="user-name">
+                            <span>
+                                用户名
+                            </span>
+                            <span className="pl4">
+                                 {sessionStorage.token}
+                            </span>
+                         </span>
                         <Button type="link" className="ml12" onClick={this.logup}>
                             注销
                         </Button>

@@ -27,7 +27,7 @@ const DefaultLayout = (props: any) => {
     // console.log(props)
     return (
         <Layout style={{ height: '100%' }} className="rc-DefaultLayout">
-            <AppHeader />
+            <AppHeader {...props}/>
             <div className="wrapper">
                 <div
                     style={{
