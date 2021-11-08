@@ -1,7 +1,16 @@
 .rc-header {
     .header {
+        display: flex;
+        flex: 1;
+        flex-wrap: nowrap;
+        justify-content: space-between;
         background-color: #0076e6;
-        .header-nav{
+        .header-info-center {
+            .user-name {
+                color: rgb(236, 234, 234);
+            }
+        }
+        .header-nav {
             display: inline-block;
             margin-left: 200px;
             li {
@@ -29,5 +38,4 @@
             // width: 44px,
         }
     }
-
 }

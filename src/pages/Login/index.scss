@@ -1,2 +1,86 @@
-.Login {
+.rc-login {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #76b852; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #76b852, #8dc26f);
+    background: -moz-linear-gradient(right, #76b852, #8dc26f);
+    background: -o-linear-gradient(right, #76b852, #8dc26f);
+    background: linear-gradient(to left, #76b852, #8dc26f);
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    .login-page {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto;
+
+        .ant-form {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            max-width: 360px;
+            margin: 0 auto 100px;
+            padding: 45px;
+            text-align: left;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+            .ant-input-affix-wrapper {
+                padding: 0 !important;
+            }
+            .ant-form-item-explain {
+                text-align: left;
+            }
+            input {
+                font-family: 'Roboto', sans-serif;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0;
+                padding: 13px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+            button {
+                width: 100%;
+                padding: 0;
+                border: none;
+                span {
+                    display: block;
+                    font-family: 'Roboto', sans-serif;
+                    text-transform: uppercase;
+                    outline: 0;
+                    background: #4caf50;
+                    width: 100%;
+                    border: 0;
+                    padding: 13px;
+                    color: #fff;
+                    font-size: 14px;
+                    -webkit-transition: all 0.3 ease;
+                    transition: all 0.3 ease;
+                    cursor: pointer;
+                }
+            }
+            button:hover,
+            button:active,
+            button:focus {
+                background: #43a047;
+            }
+            .message {
+                margin: 15px 0 0;
+                color: #b3b3b3;
+                font-size: 12px;
+            }
+            .message a {
+                color: #4caf50;
+                text-decoration: none;
+            }
+            .register-form {
+                display: none;
+            }
+        }
+    }
 }

@@ -17,43 +17,59 @@ const menuSty = {
     flex: 1
 }
 
-const AppHeader = (props: any) => {
-    const { curActive } = props
-    // console.log('props===', props)
-
-    return (
-        <div className="header-container rc-header">
-            <Header className="header">
-                <span className="avator-icon">
-                    <Avatar src={avatar} alt="" />
-                </span>
-                <div className="header-nav">
-                    <ul style={menuSty}>
-                        <li>
-                            <a href="/" rel="noopener noreferrer" className={curActive}>
-                                首页
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer">
-                                大数据可视化平台
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer">
-                                掘金
-                            </a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer">
-                                CSDN
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </Header>
-        </div>
-    )
+const curActive = true
+class AppHeader extends React.PureComponent {
+    // curActive = props
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            curActive: false
+        }
+    }
+    logup() {
+        sessionStorage.removeItem('token')
+    }
+    render() {
+        return (
+            <div className="header-container rc-header">
+                <Header className="header">
+                    <span className="avator-icon">
+                        <Avatar src={avatar} alt="" />
+                    </span>
+                    <div className="header-nav">
+                        <ul style={menuSty}>
+                            <li>
+                                <a href="/" rel="noopener noreferrer">
+                                    首页
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noopener noreferrer">
+                                    大数据可视化平台
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noopener noreferrer">
+                                    掘金
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" rel="noopener noreferrer">
+                                    CSDN
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="header-info-center">
+                        <span className="user-name">用户名 {sessionStorage.token}</span>
+                        <Button type="link" className="ml12" onClick={this.logup}>
+                            注销
+                        </Button>
+                    </div>
+                </Header>
+            </div>
+        )
+    }
 }
 
 export default AppHeader

@@ -12,7 +12,7 @@ export const Load = (Comp: any, routeProps: any) => {
     return (
         <Suspense fallback={<LoadingDemo />}>
             <Switch>
-                <ComRoutes {...routeProps}/>
+                <ComRoutes {...routeProps} />
             </Switch>
         </Suspense>
     )

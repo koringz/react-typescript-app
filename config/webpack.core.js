@@ -16,7 +16,7 @@ const coreConfig = env => {
         },
         output: {
             path: resolve(distConfig),
-            filename: '[name].[chunkhash].js'
+            filename: 'js/[name].[chunkhash].js'
         },
         // 处理文件名操作
         resolve: {

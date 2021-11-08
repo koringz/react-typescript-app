@@ -1,28 +1,66 @@
-/*  描述: 主页
- *  作者: koringz
- *  日期: 2021-10-30
- */
+import React, { Component } from 'react'
+import { Form, Input, Button, Modal, Checkbox } from 'antd'
+import { AppstoreOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import { FormInstance } from 'antd/es/form'
 
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import '@/pages/Login/index.scss'
 
-import { Layout } from 'antd'
-const { Header, Footer, Sider, Content } = Layout
+class WrappedNormalLoginForm extends React.PureComponent {
+    formRef = React.createRef<FormInstance>()
+    state = { visible: false }
+    constructor(props: any) {
+        super(props)
+    }
+    onFill = (values: any) => {
+        console.log('onFill:', values)
+    }
+    onFinish = (values: any) => {
+        const { history } = this.props as any
+        sessionStorage.token = values.username
+        history.push({
+            pathname: '/home'
+        })
+        console.log('Success:', this)
+    }
+    onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo)
+    }
 
-export default class Login extends React.Component {
     render() {
         return (
-            <div>
-                <Layout>
-                    <Header>Login</Header>
-                    <Content>Login 登陆</Content>
-                    <Footer>Login</Footer>
-                </Layout>
-            </div>
+            <section className="rc-login">
+                <section className="login-page">
+                    <Form
+                        name="basic"
+                        className="login-page"
+                        ref={this.formRef}
+                        initialValues={{ remember: true }}
+                        onFinish={this.onFinish}
+                        onFinishFailed={this.onFinishFailed}
+                        autoComplete="off"
+                    >
+                        <Form.Item
+                            className="text"
+                            label=""
+                            name="username"
+                            rules={[{ required: true, message: '请输入你的用户名!' }]}
+                        >
+                            <Input placeholder="请输入你的用户名" />
+                        </Form.Item>
+                        <Form.Item label="" name="password" rules={[{ required: true, message: '请输入你的密码!' }]}>
+                            <Input.Password placeholder="请输入你的密码" />
+                        </Form.Item>
+                        {/* <Form.Item name="remember" valuePropName="checked" className="tal">
+                            <Checkbox>记住我</Checkbox>
+                        </Form.Item> */}
+                        <Form.Item>
+                            <Button htmlType="submit">提交</Button>
+                        </Form.Item>
+                    </Form>
+                </section>
+            </section>
         )
     }
 }
 
-// export default withRouter(connect()(Login))
+export default WrappedNormalLoginForm
