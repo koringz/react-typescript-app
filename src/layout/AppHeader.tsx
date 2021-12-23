@@ -29,7 +29,6 @@ class AppHeader extends React.PureComponent {
     }
     handleMenuClick(e: any) {
         message.info('click on menu item')
-        console.log(e)
     }
     userinfo() {
         const info = sessionStorage.token ? JSON.parse(sessionStorage.token) : {}

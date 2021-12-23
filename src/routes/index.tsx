@@ -37,7 +37,7 @@ class PermissionAuth extends React.Component {
         return sessionStorage.getItem('token') ? true : false
     }
     render() {
-        console.log('this.props', this.props)
+        // console.log('this.props', this.props)
         const { location, config } = this.props as any
         const { pathname } = location
         const isLogin = this.isLogin()

@@ -16,7 +16,7 @@ import PermissionRoutes from '@/routes/baseRoute'
 
 import '@/layout/DefaultLayout.scss'
 
-const archiveSty = {
+const archiveSty: React.CSSProperties = {
     backgroundColor: '#eee',
     width: 'calc(100% - 256px)',
     float: 'right',
@@ -27,7 +27,7 @@ const DefaultLayout = (props: any) => {
     // console.log(props)
     return (
         <Layout style={{ height: '100%' }} className="rc-DefaultLayout">
-            <AppHeader {...props}/>
+            <AppHeader {...props} />
             <div className="wrapper">
                 <div
                     style={{
@@ -43,7 +43,7 @@ const DefaultLayout = (props: any) => {
                     </Switch>
                 </div>
                 <div className="archive" style={archiveSty}>
-                    <AppBreadcrumb />
+                    <AppBreadcrumb menus={PermissionRoutes} />
                     <TransitionGroup className="layout__route">
                         <CSSTransition key={location.pathname} classNames="layout__transition" timeout={300}>
                             <Switch>

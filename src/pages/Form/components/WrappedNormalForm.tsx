@@ -16,8 +16,8 @@ const FormItem = Form.Item
 
 //form代码，没有什么改进，把下面的提交按钮去掉就行
 class WrappedNormalLoginForm extends React.PureComponent {
-    formRef = React.createRef<FormInstance>();
-    
+    formRef = React.createRef < FormInstance > ();
+
     state = { visible: false }
 
     constructor(props: any) {
@@ -27,26 +27,26 @@ class WrappedNormalLoginForm extends React.PureComponent {
         (this.formRef.current as any).validateFields().then((value: any) => {
             debugger
             if (value) {
-                console.log('value==', value)
+                // console.log('value==', value)
             }
         })
     }
     onFinish = (values: any) => {
-        console.log('Success:', values)
+        // console.log('Success:', values)
     }
 
     onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo)
+        // console.log('Failed:', errorInfo)
     }
     onFill = (errorInfo: any) => {
         (this.formRef.current as any).setFieldsValue({
             note: 'Hello world!',
             gender: 'male',
-          });
+        });
     }
 
     render() {
-        return ( 
+        return (
             <>
                 <Button type="primary" onClick={() => this.setState({ visible: true })}>
                     打开弹出框

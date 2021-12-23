@@ -6,13 +6,13 @@ import { FormInstance } from 'antd/es/form'
 import '@/pages/Login/index.scss'
 
 class WrappedNormalLoginForm extends React.PureComponent {
-    formRef = React.createRef<FormInstance>()
+    formRef = React.createRef < FormInstance > ()
     state = { visible: false }
     constructor(props: any) {
         super(props)
     }
     onFill = (values: any) => {
-        console.log('onFill:', values)
+        // console.log('onFill:', values)
     }
     onFinish = (values: any) => {
         const { history } = this.props as any
@@ -20,10 +20,10 @@ class WrappedNormalLoginForm extends React.PureComponent {
         history.push({
             pathname: '/home'
         })
-        console.log('Success:', this)
+        // console.log('Success:', this)
     }
     onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo)
+        // console.log('Failed:', errorInfo)
     }
 
     render() {

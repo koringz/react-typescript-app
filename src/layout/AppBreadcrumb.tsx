@@ -3,52 +3,51 @@
  *  日期: 2021-11-04
  */
 
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Breadcrumb, Menu } from 'antd'
+import { breadcrumbFilterMap } from '@/utils/deepFilter'
 
 import '@/layout/AppBreadcrumb.scss'
 
 interface Props {
-    breadcrumbs: any[]
+    menus: Menu[];
 }
-
-const menu = (
-    <Menu>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                General
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-                Layout
-            </a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-                Navigation
-            </a>
-        </Menu.Item>
-    </Menu>
-)
 
 // 通用面包屑
-const AppBreadcrumb = () => {
+export default function AppBreadcrumb(props: Props): JSX.Element {
     const history = useHistory()
-    // console.log(history)
+    const Combreads = useMemo(() => {
+        const paths: string = history.location.pathname;
+        const arrBreads: JSX.Element[] = [];
+
+        /**
+         * @param pathname 初始 路径名
+         * @param parentId 第二次开始 查找父节点 parentId 和 menuid 对比
+         */
+        const excuteBreadcrumb = (pathnameArr: any, parentId: number | null) => {
+            let pathObj = breadcrumbFilterMap(pathnameArr, props.menus, parentId) as any
+            if (pathObj instanceof Array) pathObj = pathObj[0]
+            else pathObj = []
+
+            if (pathObj) {
+                arrBreads.push(<Breadcrumb.Item key={pathObj.name}>{pathObj.title}</Breadcrumb.Item>)
+                parentId = pathObj.parentid
+            }
+            if (parentId) {
+                excuteBreadcrumb(['null'], parentId)
+            }
+        }
+
+        excuteBreadcrumb([paths], null)
+        return arrBreads.reverse() && arrBreads
+    }, [history.location.pathname, props.menus]);
+
     return (
-        <Breadcrumb className="rc-Breadcrumb">
-            <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
-            <Breadcrumb.Item>
-                <a href="">Component</a>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item overlay={menu}>
-                <a href="">General</a>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>Button</Breadcrumb.Item>
-        </Breadcrumb>
+        <div className="gs-antd-theme-breadcrumb">
+            <Breadcrumb>
+                {Combreads}
+            </Breadcrumb>
+        </div>
     )
 }
-
-export default AppBreadcrumb

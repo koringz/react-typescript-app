@@ -19,6 +19,7 @@ const LoadComponent = <T extends React.ComponentType<any>>(
 
 export const SetRoutes = [
     {
+        menuid: 1,
         key: '/',
         name: '/',
         needLogin: true,
@@ -27,6 +28,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/layout/DefaultLayout'))
     },
     {
+        menuid: 2,
         key: '/home',
         name: 'home',
         needLogin: true,
@@ -35,6 +37,8 @@ export const SetRoutes = [
         // component: LoadComponent(() => import('@/pages/Home/index.tsx')),
         children: [
             {
+                menuid: '2-1',
+                parentid: 2,
                 key: '/home/main',
                 name: 'main',
                 needLogin: true,
@@ -43,6 +47,8 @@ export const SetRoutes = [
                 component: LoadComponent(() => import('@/pages/Home/index.tsx')),
             },
             {
+                menuid: '2-2',
+                parentid: 2,
                 key: '/home/sub',
                 name: 'home-sub',
                 redirect: '/home/sub/one',
@@ -50,12 +56,16 @@ export const SetRoutes = [
                 icon: 'bars',
                 children: [
                     {
+                        menuid: '2-2-1',
+                        parentid: '2-2',
                         key: '/home/sub/one',
                         name: 'home-sub-one',
                         title: '孙子菜单-one',
                         component: LoadComponent(() => import('@/pages/Dash/index.tsx'))
                     },
                     {
+                        menuid: '2-2-2',
+                        parentid: '2-2',
                         title: '孙子菜单-two',
                         name: 'home-sub-two',
                         key: '/home/sub/two',
@@ -66,6 +76,7 @@ export const SetRoutes = [
         ]
     },
     {
+        menuid: 3,
         key: '/table',
         name: 'table',
         needLogin: true,
@@ -74,6 +85,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
+        menuid: 4,
         key: '/form',
         name: 'form',
         needLogin: true,
@@ -82,6 +94,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Form/index.tsx'))
     },
     {
+        menuid: 5,
         key: '/404',
         name: '404',
         needLogin: true,
@@ -90,6 +103,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/components/404.tsx'))
     },
     {
+        menuid: 6,
         key: '/login',
         name: 'Login',
         needLogin: true,
@@ -98,6 +112,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Login/index.tsx'))
     },
     {
+        menuid: 7,
         key: '/about',
         name: 'About',
         needLogin: false,
@@ -124,7 +139,7 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
 }
 
 // 设置权限访问控制
-const permission = ['/table', '/home', '/form','/home/main', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
+const permission = ['/table', '/home', '/form', '/home/main', '/home/sub', '/home/sub/one', '/home/sub/two', '/about']
 const PermissionRoutes = filterRouteMap(permission, SetRoutes)
 // console.log('PermissionRoutes=',PermissionRoutes)
 
