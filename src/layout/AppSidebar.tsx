@@ -6,17 +6,7 @@
 import * as React from 'react'
 import { Link, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
-import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
-    LinkOutlined
-} from '@ant-design/icons'
-import { DownOutlined } from '@ant-design/icons'
+import { LinkOutlined } from '@ant-design/icons'
 
 const styles = {
     logo: {

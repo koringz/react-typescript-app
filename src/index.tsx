@@ -1,11 +1,28 @@
 import React from 'react'
 import { render } from 'react-dom'
 import 'antd/dist/antd.css'
+import './assets/iconfont/iconfont.css'
+import zhCN from 'antd/lib/locale/zh_CN';
+import { ConfigProvider } from 'antd';
+
 import './theme/index.scss'
 import './styles/index.scss'
 import './styles/public.scss'
 import './styles/reset.scss'
 
+import api from '@/services/api'
+React.$api = api
+
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
+
 import App from './App'
 
-render(<App />, document.querySelector('#root'))
+const Lapp = () => (
+    <ConfigProvider locale={zhCN}>
+        <App />
+    </ConfigProvider>
+)
+
+render(<Lapp />, document.querySelector('#root'))

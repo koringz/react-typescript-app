@@ -8,7 +8,7 @@ const mainConfig = env => {
         mode: 'testing',
         devServer: {
             host: '0.0.0.0',
-            port: 9099
+            port: 8088
         }
     }
 }
