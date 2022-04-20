@@ -4,6 +4,7 @@ import 'antd/dist/antd.css'
 import './assets/iconfont/iconfont.css'
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
+import { xssFilter } from '@/utils/xssFilter'
 
 import './theme/index.scss'
 import './styles/index.scss'
@@ -12,6 +13,7 @@ import './styles/reset.scss'
 
 import api from '@/services/api'
 React.$api = api
+React.$xss = xssFilter
 
 import moment from 'moment'
 import 'moment/locale/zh-cn'

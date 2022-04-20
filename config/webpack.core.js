@@ -1,6 +1,7 @@
 const path = require('path')
 // 打包文件到HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 
 const resolve = dir => path.join(__dirname, '..', dir)
 const distConfig = `dist-${process.env.FIRST_ENV}`
@@ -91,6 +92,14 @@ const coreConfig = env => {
                 template: resolve('public/index.html'),
                 publicPath: '/'
             })
+            // new copyWebpackPlugin({
+            // patterns: [
+            //     {
+            //         form: resolve('public/favicon.ico'),
+            //         to: 'lib'
+            //     }
+            // ]
+            // })
         ]
     }
 }

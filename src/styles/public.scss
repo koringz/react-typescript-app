@@ -165,11 +165,17 @@ body {
     float: right;
 }
 
+button+button{
+    margin-left: 10px;
+}
+
 /*
  * 统一设置 4 像素倍数值
  * 自定义 5 像素倍数值
 */
-
+.f1{
+    flex: 1;
+}
 .m0 {
     margin: 0 !important;
 }

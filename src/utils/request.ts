@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { message, notification } from 'antd'
 import config from '@/config/app'
+import React from 'react'
 
 interface CodeMessage {
     [key: number]: string
@@ -70,11 +71,24 @@ const http = (method: string, url: string, params: any, config = { formData: fal
         let payload = { method, url } as any
         Object.assign(payload, config)
 
+        params && Object.keys(params).map((item:any) => {
+            if(typeof params[item] === 'string') {
+                if(!params[item].length) delete params[item]
+            }
+            if(params[item] === null || params[item] === undefined) delete params[item]
+        })
+
         if (['get'].includes(method)) {
             payload.params = params
             if (payload.type) payload.responseType = payload.type == 'blob' ? 'blob' : 'json'
         } else {
+            if(params) params = React.$xss(params)
             payload.data = params
+            if (payload.type) payload.responseType = payload.type == 'blob' ? 'blob' : 'json'
+        }
+
+        if(config.baseURL) {
+            service.defaults.headers.baseURL = config.baseURL
         }
 
         service(payload)
@@ -89,6 +103,7 @@ const http = (method: string, url: string, params: any, config = { formData: fal
  */
 service.interceptors.request.use(
     (config: any) => {
+        config.headers['Content-Type'] = config.formData ? '' : 'application/json'
         config.headers['token'] = sessionStorage.token || ''
         return config
     },

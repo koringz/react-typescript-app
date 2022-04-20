@@ -28,45 +28,29 @@ class Table extends PureComponent {
 
         history.push({
             pathname,
-            search: '?'+stringify({
-              status: key,
+            search: '?' + stringify({
+                status: key,
             }),
         })
     }
-
-    // componentWillMount () {
-    //     // console.log('componentWillMount==',this.props)
-    // }
-
     componentDidMount() {
         const { location, history } = this.props as any
         const { pathname } = location
     }
-
-    componentDidUpdate () {
-        // console.log(this.props)
+    componentDidUpdate() {
     }
-
-    // componentWillReceiveProps() {
-    //     // console.log('componentWillReceiveProps==',this.props)
-    // }
-
     componentWillUnmount() {
-        // console.log('componentWillUnmount==',this.props)
     }
-
     get listProps() {
         const { location } = this.props as any
         const { search, pathname } = location
         // console.log('location====',location)
-
         return {
             onChange(page: any) {
             }
         }
     }
-
-    public takeUrlParams (name: string) {
+    public takeUrlParams(name: string) {
         const { location } = this.props as any
         const { search } = location
         const paramsString = search.substring(1)
@@ -74,15 +58,14 @@ class Table extends PureComponent {
         const value = searchParams.get(name)
         return value
     }
-
     render() {
         return (
             <Layout>
                 <Content >
                     <Tabs activeKey={
                         this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
-                        ? String(EnumPostStatus.UNPUBLISH)
-                        : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
+                            ? String(EnumPostStatus.UNPUBLISH)
+                            : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
                         <TabPane tab={`公用`} key={String(EnumPostStatus.PUBLISHED)}>
                             <List {...this.listProps} />
                         </TabPane>

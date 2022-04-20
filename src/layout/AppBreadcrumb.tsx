@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { Breadcrumb, Menu } from 'antd'
 import { breadcrumbFilterMap } from '@/utils/deepFilter'
 
-import '@/layout/AppBreadcrumb.scss'
+import './AppBreadcrumb.scss'
 
 interface Props {
     menus: Menu[];
@@ -44,7 +44,7 @@ export default function AppBreadcrumb(props: Props): JSX.Element {
     }, [history.location.pathname, props.menus]);
 
     return (
-        <div className="gs-antd-theme-breadcrumb">
+        <div className="rc-breadcrumb">
             <Breadcrumb>
                 {Combreads}
             </Breadcrumb>

@@ -4,13 +4,11 @@
  */
 
 import React from 'react'
-import { Link } from 'react-router-dom'
-
 import { Layout } from 'antd'
-const { Header, Footer, Sider, Content } = Layout
+
+const { Content } = Layout
 
 const Dash: React.FC = (props): React.ReactElement => {
-    // console.log(props)
     return (
         <Layout>
             <Content>Dash 12312312</Content>

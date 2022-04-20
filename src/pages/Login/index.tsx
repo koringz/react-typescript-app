@@ -6,13 +6,12 @@ import { FormInstance } from 'antd/es/form'
 import '@/pages/Login/index.scss'
 
 class WrappedNormalLoginForm extends React.PureComponent {
-    formRef = React.createRef < FormInstance > ()
+    formRef = React.createRef<FormInstance>()
     state = { visible: false }
     constructor(props: any) {
         super(props)
     }
     onFill = (values: any) => {
-        // console.log('onFill:', values)
     }
     onFinish = (values: any) => {
         const { history } = this.props as any
@@ -20,10 +19,8 @@ class WrappedNormalLoginForm extends React.PureComponent {
         history.push({
             pathname: '/home'
         })
-        // console.log('Success:', this)
     }
     onFinishFailed = (errorInfo: any) => {
-        // console.log('Failed:', errorInfo)
     }
 
     render() {
@@ -33,16 +30,16 @@ class WrappedNormalLoginForm extends React.PureComponent {
                     <Form
                         name="basic"
                         className="login-page"
+                        autoComplete="off"
                         ref={this.formRef}
-                        initialValues={{ remember: true }}
                         onFinish={this.onFinish}
                         onFinishFailed={this.onFinishFailed}
-                        autoComplete="off"
+                        initialValues={{ remember: true }}
                     >
                         <Form.Item
-                            className="text"
                             label=""
                             name="username"
+                            className="text"
                             rules={[{ required: true, message: '请输入你的用户名!' }]}
                         >
                             <Input placeholder="请输入你的用户名" />
@@ -50,9 +47,6 @@ class WrappedNormalLoginForm extends React.PureComponent {
                         <Form.Item label="" name="password" rules={[{ required: true, message: '请输入你的密码!' }]}>
                             <Input.Password placeholder="请输入你的密码" />
                         </Form.Item>
-                        {/* <Form.Item name="remember" valuePropName="checked" className="tal">
-                            <Checkbox>记住我</Checkbox>
-                        </Form.Item> */}
                         <Form.Item>
                             <Button htmlType="submit">提交</Button>
                         </Form.Item>

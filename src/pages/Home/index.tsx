@@ -3,133 +3,166 @@
  *  日期: 2021-10-30
  */
 
-import React from 'react'
-import {
-    BrowserRouter as Router,
-    HashRouter,
-    Redirect,
-    Switch,
-    Route,
-    Link,
-    RouteComponentProps,
-    withRouter
-} from 'react-router-dom'
-import { Table, Typography } from 'antd'
-import ComponentWillLoad, { Load } from '@/routes/index'
+import React, { PureComponent } from 'react'
+import { message, Table, Space } from 'antd'
+import SearchForm from './SearchForm'
+import RCDialog from './components/RCDialog'
 
 import { Layout } from 'antd'
-const { Header, Footer, Sider, Content } = Layout
-const { Text } = Typography
+const { Content } = Layout
 
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name'
-    },
-    {
-        title: 'Borrow',
-        dataIndex: 'borrow'
-    },
-    {
-        title: 'Repayment',
-        dataIndex: 'repayment'
-    }
-]
-
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        borrow: 10,
-        repayment: 33
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        borrow: 100,
-        repayment: 0
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        borrow: 10,
-        repayment: 10
-    },
-    {
-        key: '4',
-        name: 'Jim Red',
-        borrow: 75,
-        repayment: 45
-    }
-]
-
-const fixedColumns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        fixed: true,
-        width: 100
-    },
-    {
-        title: 'Description',
-        dataIndex: 'description'
-    }
-]
-
-const fixedData = []
+let getDataSource: any[] = []
 for (let i = 0; i < 20; i += 1) {
-    fixedData.push({
+    getDataSource.push({
         key: i,
         name: ['Light', 'Bamboo', 'Little'][i % 3],
-        description: 'Everything that has a beginning, has an end.'
+        timer: ['Light', 'Bamboo', 'Little'][i % 3],
+        description: 'Everything that has a beginning, has an end.',
     })
 }
 
-const Home: React.FC = (props): React.ReactElement => {
-    const { location, history } = props as any
-    // const { children } = routes
-    console.log('home============', props)
-    return (
-        <Layout>
-            <Content>
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    pagination={false}
-                    bordered
-                    summary={pageData => {
-                        let totalBorrow = 0
-                        let totalRepayment = 0
+class Home extends PureComponent {
 
-                        pageData.forEach(({ borrow, repayment }) => {
-                            totalBorrow += borrow
-                            totalRepayment += repayment
-                        })
-
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            // 搜索
+            searchFormParams: {},
+            // 列表
+            columns: [
+                {
+                    title: '用户名',
+                    dataIndex: 'name'
+                },
+                {
+                    title: '时间',
+                    dataIndex: 'timer'
+                },
+                {
+                    title: '描述',
+                    dataIndex: 'description'
+                },
+                {
+                    title: '操作',
+                    dataIndex: 'operation',
+                    render: (text: any, record: any) => {
                         return (
-                            <>
-                                <Table.Summary.Row>
-                                    <Table.Summary.Cell>Total</Table.Summary.Cell>
-                                    <Table.Summary.Cell>
-                                        <Text type="danger">{totalBorrow}</Text>
-                                    </Table.Summary.Cell>
-                                    <Table.Summary.Cell>
-                                        <Text>{totalRepayment}</Text>
-                                    </Table.Summary.Cell>
-                                </Table.Summary.Row>
-                                <Table.Summary.Row>
-                                    <Table.Summary.Cell>Balance</Table.Summary.Cell>
-                                    <Table.Summary.Cell colSpan={2}>
-                                        <Text type="danger">{totalBorrow - totalRepayment}</Text>
-                                    </Table.Summary.Cell>
-                                </Table.Summary.Row>
-                            </>
+                            <Space size="middle" className='rc-antd-layout-table-operation'>
+                                <a key={Math.random().toString(36).substring(1, 14)} onClick={() => this.handleCheck(true, record)}>
+                                    <span>查看</span>
+                                </a>
+                            </Space>
                         )
-                    }}
-                />
-            </Content>
-        </Layout>
-    )
+                    }
+
+                }
+            ],
+            dataSource: getDataSource,
+            pageSize: 10,
+            pageNum: 1,
+            total: 0,
+            loading: false,
+            // 其他
+            isCheck: false,
+            snapshot: {},
+        }
+        this.handleCheck.bind(this)
+    }
+    /**
+     * 搜索
+     */
+    async handleSearch() {
+        this.setState({ loading: true })
+        const params = this.getParamers()
+        React.$api.getshow && React.$api.getshow(params).then((res: any) => {
+            if (res.data.code == 200) {
+                const DATA = res.data.data
+                this.resetStateData(DATA)
+            }
+            else {
+                message.error(res.data.message)
+            }
+        })
+    }
+
+    getParamers() {
+        const searchFormParams = this.state.searchFormParams as any
+        const params = { ...this.state, ...searchFormParams }
+        return {
+            pageSize: params.pageSize,
+            pageNum: params.pageNum,
+        }
+    }
+    resetStateData(DATA: any) {
+        this.setState({
+            loading: false,
+            dataSource: DATA,
+            total: DATA.total,
+            pageSize: DATA.pageSize
+        })
+    }
+    changeSearchForm() {
+    }
+
+    /**
+     * 页码
+     * @param pageNum 
+     * @param pageSize 
+     */
+    handleOnChange(pageNum: number, pageSize: number) {
+        this.setState((preState, props) => ({ pageSize, pageNum }), () => this.handleSearch())
+    }
+    handleShowSizeChange(current: number, pageSize: number) {
+        this.setState({ pageSize: pageSize, current: current })
+    }
+    /**
+     * 操作
+     * @returns 
+     */
+    handleCheck(bool: boolean, data: any) {
+        this.setState({
+            isCheck: true
+        })
+    }
+    onCancel() {
+        this.setState({ isCheck: false })
+    }
+    onSure() {
+        this.onCancel()
+        this.handleSearch()
+    }
+    render() {
+        const { dataSource, columns, pageSize, pageNum, total, snapshot, isCheck } = this.state as any
+        return (
+            <Layout>
+                <Content>
+                    <SearchForm changeSearchForm={this.changeSearchForm.bind(this)} {...this.props}></SearchForm>
+                    <Table
+                        className='rc-antd-layout-pagination rc-antd-layout-table'
+                        columns={columns}
+                        dataSource={!dataSource ? [] : dataSource.map((item: any, index: number) => {
+                            item.key = item.key || index
+                            return item
+                        })}
+                        pagination={{
+                            simple: false,
+                            showSizeChanger: true,
+                            showQuickJumper: true,
+                            pageSize: pageSize,
+                            total: total,
+                            current: pageNum,
+                            showTotal: (count) => {
+                                let pageNum = Math.ceil(count)
+                                return '共' + pageNum + '条'
+                            },
+                            onChange: this.handleOnChange.bind(this)
+                        }}
+                    />
+                    {isCheck && <RCDialog isVisible={isCheck} onCancel={() => this.onCancel()} onSure={() => this.onSure()} ></RCDialog>}
+                </Content>
+            </Layout>
+        )
+    }
 }
 
-export default withRouter(Home)
+export default Home

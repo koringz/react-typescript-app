@@ -85,15 +85,6 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
-        menuid: 4,
-        key: '/form',
-        name: 'form',
-        needLogin: true,
-        title: '表单',
-        icon: 'bars',
-        component: LoadComponent(() => import('@/pages/Form/index.tsx'))
-    },
-    {
         menuid: 5,
         key: '/404',
         name: '404',
@@ -111,15 +102,6 @@ export const SetRoutes = [
         icon: 'bars',
         component: LoadComponent(() => import('@/pages/Login/index.tsx'))
     },
-    {
-        menuid: 7,
-        key: '/about',
-        name: 'About',
-        needLogin: false,
-        title: '关于',
-        icon: 'bars',
-        component: LoadComponent(() => import('@/pages/About/index.tsx'))
-    }
 ]
 
 // 根据路由名称获取可访问的路由表
