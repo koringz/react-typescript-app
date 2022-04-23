@@ -60,6 +60,8 @@
     "@hot-loader/react-dom": "^17.0.1+4.13.0",
     "copy-webpack-plugin": "^10.2.4",
     "prettier": "2.3.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.1",
     "sass": "^1.39.0",
     "sass-loader": "^12.3.0",
     "webpack": "^5.52.0"
