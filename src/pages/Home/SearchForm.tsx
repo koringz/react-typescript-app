@@ -39,7 +39,7 @@ const SearchForm = (props: any) => {
                         <Form.Item name="name" label="用户名" >
                             <Input placeholder="请输入" onPressEnter={onSearch}></Input>
                         </Form.Item>
-                        <Form.Item  >
+                        <Form.Item>
                             <Button size="middle" type="primary" htmlType="submit">查询</Button>
                             <Button size="middle" onClick={onReset}>重置</Button>
                         </Form.Item>

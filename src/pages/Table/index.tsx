@@ -3,7 +3,7 @@
  *  日期: 2021-10-30
  */
 
-import React, { PureComponent } from 'react'
+import React, { Component, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Tabs, Layout } from 'antd'
 import { stringify } from 'qs'
@@ -20,7 +20,10 @@ const EnumPostStatus = {
     PUBLISHED: 2
 }
 
-class Table extends PureComponent {
+class Table extends Component {
+    constructor(props: any) {
+        super(props)
+    }
     handleTabClick = (key: any) => {
         console.log(this.props)
         const { location, history } = this.props as any
@@ -44,7 +47,6 @@ class Table extends PureComponent {
     get listProps() {
         const { location } = this.props as any
         const { search, pathname } = location
-        // console.log('location====',location)
         return {
             onChange(page: any) {
             }

@@ -24,7 +24,6 @@ export default class AppSidebar extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         // console.log(this.props as any)
         // 防止页面刷新侧边栏又初始化了
         const pathname = (this.props as any).location.pathname
@@ -51,7 +50,6 @@ export default class AppSidebar extends React.Component {
     }
 
     componentWillReceiveProps(nextProps: any) {
-        // debugger
         // console.log(nextProps)
         //当点击面包屑导航时，侧边栏要同步响应
         const pathname = nextProps.location.pathname
@@ -87,19 +85,20 @@ export default class AppSidebar extends React.Component {
         }
     }
 
-    renderMenuItem = ({ key, icon, title } = this.props as any) => {
-        return (
-            <Menu.Item key={key}>
+    renderMenuItem = ({ key, icon, title, hidden } = this.props as any) => {
+        return !hidden ? (
+            <Menu.Item key={key} style={{ display: hidden ? 'none' : 'block' }}>
                 <Link to={key}>
                     {icon && <LinkOutlined type={icon} />}
                     <span>{title}</span>
                 </Link>
             </Menu.Item>
-        )
+        ) : false
     }
-    renderSubMenu = ({ key, icon, title, children } = this.props as any) => {
+    renderSubMenu = ({ key, icon, title, children, hidden } = this.props as any) => {
         return (
             <Menu.SubMenu
+                style={{ display: hidden ? 'none' : 'block' }}
                 key={key}
                 title={
                     <span>
@@ -110,7 +109,7 @@ export default class AppSidebar extends React.Component {
             >
                 {children &&
                     children.map((item: any) => {
-                        return item.children && item.children.length > 0
+                        return item.children && item.children.length > 0 && !hidden
                             ? this.renderSubMenu(item)
                             : this.renderMenuItem(item)
                     })}
@@ -121,16 +120,14 @@ export default class AppSidebar extends React.Component {
     render() {
         const { menus } = this.props as any
         const { openKeys, selectedKeys } = this.state
-        // console.log('props', this.props)
-        // debugger
         return (
             <Menu
-                onOpenChange={this.onOpenChange}
-                onClick={({ key }) => this.setState({ selectedKeys: [key] })}
+                mode="inline"
                 openKeys={openKeys}
                 selectedKeys={selectedKeys}
+                onOpenChange={this.onOpenChange}
+                onClick={({ key }) => this.setState({ selectedKeys: [key] })}
                 theme={(this.props as any).theme ? (this.props as any).theme : 'light'}
-                mode="inline"
             >
                 {(this.props as any).menus &&
                     (this.props as any).menus.map((item: any) => {

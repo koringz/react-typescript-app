@@ -39,16 +39,16 @@ const DefaultLayout = (props: any) => {
                     }}
                 >
                     <Switch>
-                        <AppSidebar menus={PermissionRoutes} />
+                        <AppSidebar menus={PermissionRoutes()} />
                     </Switch>
                 </div>
                 <div className="archive" style={archiveSty}>
-                    <AppBreadcrumb menus={PermissionRoutes} />
+                    <AppBreadcrumb menus={PermissionRoutes()} />
                     <TransitionGroup className="layout__route">
                         <CSSTransition key={location.pathname} classNames="layout__transition" timeout={300}>
                             <Switch>
                                 {/* <SiderNav menus={setRoutes}/> */}
-                                <ComponentWillLoad config={PermissionRoutes} />
+                                <ComponentWillLoad config={PermissionRoutes()} />
                             </Switch>
                         </CSSTransition>
                     </TransitionGroup>

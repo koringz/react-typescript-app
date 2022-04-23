@@ -5,7 +5,7 @@ import { FormInstance } from 'antd/es/form'
 
 import '@/pages/Login/index.scss'
 
-class WrappedNormalLoginForm extends React.PureComponent {
+class WrappedNormalLoginForm extends Component {
     formRef = React.createRef<FormInstance>()
     state = { visible: false }
     constructor(props: any) {

@@ -4,11 +4,10 @@
  */
 
 import React, { PureComponent } from 'react'
-import { message, Table, Space } from 'antd'
+import { message, Table, Space, Layout } from 'antd'
 import SearchForm from './SearchForm'
 import RCDialog from './components/RCDialog'
 
-import { Layout } from 'antd'
 const { Content } = Layout
 
 let getDataSource: any[] = []
@@ -21,10 +20,9 @@ for (let i = 0; i < 20; i += 1) {
     })
 }
 
-class Home extends PureComponent {
-
+class Home extends React.Component {
     constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
             // 搜索
             searchFormParams: {},
@@ -45,16 +43,15 @@ class Home extends PureComponent {
                 {
                     title: '操作',
                     dataIndex: 'operation',
-                    render: (text: any, record: any) => {
-                        return (
-                            <Space size="middle" className='rc-antd-layout-table-operation'>
-                                <a key={Math.random().toString(36).substring(1, 14)} onClick={() => this.handleCheck(true, record)}>
-                                    <span>查看</span>
-                                </a>
-                            </Space>
-                        )
-                    }
-
+                    // render: (text: any, record: any) => {
+                    //     return (
+                    //         <Space size="middle" className='rc-antd-layout-table-operation'>
+                    //             <a key={Math.random().toString(36).substring(1, 14)} onClick={() => this.handleCheck(true, record)}>
+                    //                 <span>查看3</span>
+                    //             </a>
+                    //         </Space>
+                    //     )
+                    // }
                 }
             ],
             dataSource: getDataSource,
