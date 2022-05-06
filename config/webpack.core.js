@@ -91,15 +91,15 @@ const coreConfig = env => {
                 title: 'React-Demo',
                 template: resolve('public/index.html'),
                 publicPath: '/'
+            }),
+            new copyWebpackPlugin({
+                patterns: [
+                    {
+                        from: resolve('public/test.bat'),
+                        to: resolve(`${distConfig}/oct`)
+                    }
+                ]
             })
-            // new copyWebpackPlugin({
-            // patterns: [
-            //     {
-            //         form: resolve('public/favicon.ico'),
-            //         to: 'lib'
-            //     }
-            // ]
-            // })
         ]
     }
 }

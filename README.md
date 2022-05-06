@@ -6,10 +6,6 @@ react-typescript-app 脚手架
 
 typescript, react, scss, less, plop, antd
 
-## node 版本
-
-v.13.14 以上
-
 ## 初次打开
 
 > yarn open
@@ -20,10 +16,14 @@ v.13.14 以上
 
 ## 模板构建
 
-> yarn polp
+> yarn plop
 
 wait... 输入你的组件名 {{ComponentName}}
 
-## 优化
+## 优化 20211110
 
-路由权限验证 | 热模块更新 | 请求拦截器 | store 数据 | 表单查询 | 列表模板 | 弹出框 | 引入第三方库 | 打包添加第三方文件 | 运行中断端口被占用重启
+路由权限验证
+热模块更新
+表单查询
+拦截器
+store 数据

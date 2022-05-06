@@ -154,9 +154,10 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
 }
 
 
-
 // 设置权限访问控制
 const permission = ['table', 'home', 'form', 'main', 'homeSub', 'homeSubOne', 'uploadfile', 'homeSubTwo', 'permission']
+
+// sessionStorage.menu = JSON.stringify([{route: "table"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
 
 /**
  * 获取权限路径-过滤数据

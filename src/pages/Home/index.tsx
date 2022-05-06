@@ -16,13 +16,13 @@ for (let i = 0; i < 20; i += 1) {
         key: i,
         name: ['Light', 'Bamboo', 'Little'][i % 3],
         timer: ['Light', 'Bamboo', 'Little'][i % 3],
-        description: 'Everything that has a beginning, has an end.'
+        description: 'Everything that has a beginning, has an end.',
     })
 }
 
 class Home extends React.Component {
     constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
             // 搜索
             searchFormParams: {},
@@ -45,12 +45,9 @@ class Home extends React.Component {
                     dataIndex: 'operation',
                     render: (text: any, record: any) => {
                         return (
-                            <Space size="middle" className="rc-antd-layout-table-operation">
-                                <a
-                                    key={Math.random().toString(36).substring(1, 14)}
-                                    onClick={() => this.handleCheck(true, record)}
-                                >
-                                    <span>查看</span>
+                            <Space size="middle" className='rc-antd-layout-table-operation'>
+                                <a key={Math.random().toString(36).substring(1, 14)} onClick={() => this.handleCheck(true, record)}>
+                                    <span>查看3</span>
                                 </a>
                             </Space>
                         )
@@ -64,7 +61,7 @@ class Home extends React.Component {
             loading: false,
             // 其他
             isCheck: false,
-            snapshot: {}
+            snapshot: {},
         }
         this.handleCheck.bind(this)
     }
@@ -74,15 +71,15 @@ class Home extends React.Component {
     async handleSearch() {
         this.setState({ loading: true })
         const params = this.getParamers()
-        React.$api.getshow &&
-            React.$api.getshow(params).then((res: any) => {
-                if (res.data.code == 200) {
-                    const DATA = res.data.data
-                    this.resetStateData(DATA)
-                } else {
-                    message.error(res.data.message)
-                }
-            })
+        React.$api.getshow && React.$api.getshow(params).then((res: any) => {
+            if (res.data.code == 200) {
+                const DATA = res.data.data
+                this.resetStateData(DATA)
+            }
+            else {
+                message.error(res.data.message)
+            }
+        })
     }
 
     getParamers() {
@@ -90,7 +87,7 @@ class Home extends React.Component {
         const params = { ...this.state, ...searchFormParams }
         return {
             pageSize: params.pageSize,
-            pageNum: params.pageNum
+            pageNum: params.pageNum,
         }
     }
     resetStateData(DATA: any) {
@@ -101,25 +98,23 @@ class Home extends React.Component {
             pageSize: DATA.pageSize
         })
     }
-    changeSearchForm() {}
+    changeSearchForm() {
+    }
 
     /**
      * 页码
-     * @param pageNum
-     * @param pageSize
+     * @param pageNum 
+     * @param pageSize 
      */
     handleOnChange(pageNum: number, pageSize: number) {
-        this.setState(
-            (preState, props) => ({ pageSize, pageNum }),
-            () => this.handleSearch()
-        )
+        this.setState((preState, props) => ({ pageSize, pageNum }), () => this.handleSearch())
     }
     handleShowSizeChange(current: number, pageSize: number) {
         this.setState({ pageSize: pageSize, current: current })
     }
     /**
      * 操作
-     * @returns
+     * @returns 
      */
     handleCheck(bool: boolean, data: any) {
         this.setState({
@@ -140,16 +135,12 @@ class Home extends React.Component {
                 <Content>
                     <SearchForm changeSearchForm={this.changeSearchForm.bind(this)} {...this.props}></SearchForm>
                     <Table
-                        className="rc-antd-layout-pagination rc-antd-layout-table"
+                        className='rc-antd-layout-pagination rc-antd-layout-table'
                         columns={columns}
-                        dataSource={
-                            !dataSource
-                                ? []
-                                : dataSource.map((item: any, index: number) => {
-                                      item.key = item.key || index
-                                      return item
-                                  })
-                        }
+                        dataSource={!dataSource ? [] : dataSource.map((item: any, index: number) => {
+                            item.key = item.key || index
+                            return item
+                        })}
                         pagination={{
                             simple: false,
                             showSizeChanger: true,
@@ -157,20 +148,14 @@ class Home extends React.Component {
                             pageSize: pageSize,
                             total: total,
                             current: pageNum,
-                            showTotal: count => {
+                            showTotal: (count) => {
                                 let pageNum = Math.ceil(count)
                                 return '共' + pageNum + '条'
                             },
                             onChange: this.handleOnChange.bind(this)
                         }}
                     />
-                    {isCheck && (
-                        <RCDialog
-                            isVisible={isCheck}
-                            onCancel={() => this.onCancel()}
-                            onSure={() => this.onSure()}
-                        ></RCDialog>
-                    )}
+                    {isCheck && <RCDialog isVisible={isCheck} onCancel={() => this.onCancel()} onSure={() => this.onSure()} ></RCDialog>}
                 </Content>
             </Layout>
         )

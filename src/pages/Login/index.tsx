@@ -11,22 +11,17 @@ class WrappedNormalLoginForm extends Component {
     constructor(props: any) {
         super(props)
     }
-    onFill = (values: any) => {}
+    onFill = (values: any) => {
+    }
     onFinish = (values: any) => {
         const { history } = this.props as any
         sessionStorage.token = values.username
-        sessionStorage.menu = JSON.stringify([
-            { route: 'table' },
-            { route: 'home' },
-            { route: 'permission' },
-            { route: 'main' },
-            { route: 'uploadfile' }
-        ])
         history.push({
             pathname: '/home'
         })
     }
-    onFinishFailed = (errorInfo: any) => {}
+    onFinishFailed = (errorInfo: any) => {
+    }
 
     render() {
         return (

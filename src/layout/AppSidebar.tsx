@@ -49,7 +49,7 @@ export default class AppSidebar extends React.Component {
         }
     }
 
-    componentWillUpdate(nextProps: any) {
+    componentWillReceiveProps(nextProps: any) {
         // console.log(nextProps)
         //当点击面包屑导航时，侧边栏要同步响应
         const pathname = nextProps.location.pathname
@@ -93,9 +93,7 @@ export default class AppSidebar extends React.Component {
                     <span>{title}</span>
                 </Link>
             </Menu.Item>
-        ) : (
-            false
-        )
+        ) : false
     }
     renderSubMenu = ({ key, icon, title, children, hidden } = this.props as any) => {
         return (

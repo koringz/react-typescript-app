@@ -1,98 +1,61 @@
 /*  描述: 表格
  *  作者: koringz
- *  日期: 2021-10-30
+ *  日期: 2022-5-5
  */
 
 import React, { Component, PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Tabs, Layout } from 'antd'
-import { stringify } from 'qs'
+import SearchForm from './SearchForm'
 
-import List from './components/List'
+import FirstList from './components/FirstList'
+import SecondList from './components/SecondList'
 
 const { Content } = Layout
-
 const { TabPane } = Tabs
 
-
 const EnumPostStatus = {
-    UNPUBLISH: 1,
-    PUBLISHED: 2
+    First: 1,
+    Second: 2
 }
 
-class Table extends Component {
-    constructor(props: any) {
-        super(props)
-    }
-    handleTabClick = (key: any) => {
-        console.log(this.props)
-        const { location, history } = this.props as any
-        const { pathname } = location
-
-        history.push({
-            pathname,
-            search: '?' + stringify({
-                status: key,
-            }),
-        })
-    }
-    componentDidMount() {
-        const { location, history } = this.props as any
-        const { pathname } = location
-    }
-    componentDidUpdate() {
-    }
-    componentWillUnmount() {
-    }
-    get listProps() {
-        const { location } = this.props as any
-        const { search, pathname } = location
-        return {
-            onChange(page: any) {
-            }
-        }
-    }
-    public takeUrlParams(name: string) {
-        const { location } = this.props as any
-        const { search } = location
-        const paramsString = search.substring(1)
-        const searchParams = new URLSearchParams(paramsString)
-        const value = searchParams.get(name)
-        return value
-    }
+class MultTable extends PureComponent {
     render() {
         return (
-            <Layout>
-                <Content >
-                    <Tabs activeKey={
-                        this.takeUrlParams('status') === String(EnumPostStatus.UNPUBLISH)
-                            ? String(EnumPostStatus.UNPUBLISH)
-                            : String(EnumPostStatus.PUBLISHED)} onChange={this.handleTabClick}>
-                        <TabPane tab={`公用`} key={String(EnumPostStatus.PUBLISHED)}>
-                            <List {...this.listProps} />
-                        </TabPane>
-                        <TabPane tab={`非公用`} key={String(EnumPostStatus.UNPUBLISH)}>
-                            <List {...this.listProps} />
-                        </TabPane>
-                    </Tabs>
-                </Content>
+            <Layout className='rc-antd-layout-pagination rc-antd-layout-table'>
+                <SearchForm />
+                <TableList {...this.props} />
             </Layout>
         )
     }
 }
 
-interface Table {
-    post: any
-    loading: any
-    location: any
-    dispatch: any
+class TableList extends Component {
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            tab: String(EnumPostStatus.First)
+        }
+    }
+    onHandleTabChange(val: any) {
+        this.setState({
+            tab: val
+        })
+    }
+    render() {
+        const { tab } = this.state as any
+        return (
+            <Content >
+                <Tabs activeKey={tab} onChange={this.onHandleTabChange.bind(this)}>
+                    <TabPane tab={`公用`} key={String(EnumPostStatus.First)}>
+                        {tab === String(EnumPostStatus.First) && <FirstList {...this.props} />}
+                    </TabPane>
+                    <TabPane tab={`非公用`} key={String(EnumPostStatus.Second)}>
+                        {tab === String(EnumPostStatus.Second) && <SecondList {...this.props} />}
+                    </TabPane>
+                </Tabs>
+            </Content>
+        )
+    }
 }
 
-Table.propTypes = {
-    post: PropTypes.object,
-    loading: PropTypes.object,
-    location: PropTypes.object,
-    dispatch: PropTypes.func
-}
-
-export default Table
+export default MultTable
