@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Redirect, Switch, Route, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Routes, Route, withRouter } from 'react-router-dom'
 import LoadingDemo from '@/components/loadingDemo'
 import { deepFilterMap } from '@/utils/deepFilter'
 
@@ -11,9 +11,9 @@ export const Load = (Comp: any, routeProps: any) => {
     const ComRoutes = withRouter(Com)
     return (
         <Suspense fallback={<LoadingDemo />}>
-            <Switch>
+            <Routes>
                 <ComRoutes {...routeProps} />
-            </Switch>
+            </Routes>
         </Suspense>
     )
 }
@@ -57,9 +57,9 @@ class PermissionAuth extends React.Component {
             // 如果是登陆状态,想要跳转到登陆,重定向到主页
             if (pathname === '/login') {
                 return (
-                    <Switch>
+                    <Routes>
                         <Redirect from="/" to="/home" />
-                    </Switch>
+                    </Routes>
                 )
             } else {
                 // 如果路由合法,就跳转到相应的路由
@@ -71,24 +71,24 @@ class PermissionAuth extends React.Component {
                         // console.log('Children====', Children)
                         const ChildComponent = Children.find((v: any) => v.key === RedirectPath) as any
                         return (
-                            <Switch>
+                            <Routes>
                                 <Redirect from={targetRouterConfig.path} to={RedirectPath} />
                                 <Route
                                     path={RedirectPath}
                                     render={(routeProps: any) => <Load {...ChildComponent} routeProps={routeProps} />}
                                 />
-                            </Switch>
+                            </Routes>
                         )
                     } else {
                         return (
-                            <Switch>
+                            <Routes>
                                 <Route
                                     path={pathname}
                                     render={(routeProps: any) => (
                                         <Load {...targetRouterConfig} routeProps={routeProps} />
                                     )}
                                 />
-                            </Switch>
+                            </Routes>
                         )
                     }
                 } else {
@@ -102,9 +102,9 @@ class PermissionAuth extends React.Component {
             // 路由合法
             if (targetRouterConfig && targetRouterConfig.needLogin) {
                 return (
-                    <Switch>
+                    <Routes>
                         <Redirect to="/login" />
-                    </Switch>
+                    </Routes>
                 )
             } else {
                 // 非登陆状态下,路由不合法时, 重定向至 404

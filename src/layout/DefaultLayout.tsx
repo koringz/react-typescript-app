@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { Switch } from 'react-router-dom'
+import { Routes } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { Layout } from 'antd'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -38,18 +38,18 @@ const DefaultLayout = (props: any) => {
                         background: '#fff'
                     }}
                 >
-                    <Switch>
+                    <Routes>
                         <AppSidebar menus={PermissionRoutes()} />
-                    </Switch>
+                    </Routes>
                 </div>
                 <div className="archive" style={archiveSty}>
                     <AppBreadcrumb menus={PermissionRoutes()} />
                     <TransitionGroup className="layout__route">
                         <CSSTransition key={location.pathname} classNames="layout__transition" timeout={300}>
-                            <Switch>
+                            <Routes>
                                 {/* <SiderNav menus={setRoutes}/> */}
                                 <ComponentWillLoad config={PermissionRoutes()} />
-                            </Switch>
+                            </Routes>
                         </CSSTransition>
                     </TransitionGroup>
                 </div>

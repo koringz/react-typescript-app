@@ -2,6 +2,9 @@
 const { merge } = require('webpack-merge')
 const coreConfig = require('./webpack.core')
 const baseConfig = require('./webpack.base')
+const copyWebpackPlugin = require('copy-webpack-plugin')
+const resolve = dir => path.join(__dirname, '..', dir)
+const distConfig = `dist-${process.env.FIRST_ENV}`
 
 const url = '//172.24.172.123:8005' //服务器端接口地址
 const mainConfig = env => {
@@ -22,7 +25,17 @@ const mainConfig = env => {
                     pathRewrite: { '^/api': '' }
                 }
             }
-        }
+        },
+        plugins: [
+            new copyWebpackPlugin({
+                patterns: [
+                    {
+                        from: resolve('public/test.bat'),
+                        to: resolve(`${distConfig}/oct`)
+                    }
+                ]
+            })
+        ]
     }
 }
 
