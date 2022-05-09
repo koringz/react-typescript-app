@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react'
-import { BrowserRouter as Router, HashRouter, Redirect, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, HashRouter, Redirect, Switch, Route } from 'react-router-dom'
 import { hot } from 'react-hot-loader/root'
 import { Provider } from 'react-redux'
 import store from '@/store/store'
@@ -21,7 +21,7 @@ class App extends React.PureComponent {
         return (
             <Provider store={store}>
                 <HashRouter>
-                    <Routes>
+                    <Switch>
                         <Redirect exact from="/" to="/home" />
                         <Route
                             path={'/login'}
@@ -31,7 +31,7 @@ class App extends React.PureComponent {
                         />
                         <Route path={'/404'} render={(routeProps: any) => <Load {...Nofound} />} />
                         <Route path={'/'} render={(routeProps: any) => <DefaultLayout {...routeProps} />} />
-                    </Routes>
+                    </Switch>
                 </HashRouter>
             </Provider>
         )

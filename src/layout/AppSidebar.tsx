@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react'
-import { Link, Routes, withRouter } from 'react-router-dom'
+import { Link, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Dropdown, Modal, Form, Button, Input, message } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
@@ -29,7 +29,7 @@ export default class AppSidebar extends React.Component {
         const pathname = (this.props as any).location.pathname
         //获取当前所在的目录层级
         const rank = pathname.split('/')
-        Routes (rank.length) {
+        switch (rank.length) {
             case 2: //一级目录
                 this.setState({
                     selectedKeys: [pathname]
