@@ -26,11 +26,11 @@ npm config set registry=https://registry.npmjs.org/
 
 wait... 输入你的组件名 {{ComponentName}}
 
-## 优化 20211110
+## 优化 20211110 ~ 20220519
 
 -   路由权限验证
 -   热模块更新
 -   表单查询
 -   拦截器
 -   store 数据
--   多线程编译
+-   多线程编译(20220519)
