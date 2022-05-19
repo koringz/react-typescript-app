@@ -18,12 +18,19 @@ typescript, react, scss, less, plop, antd
 
 > yarn plop
 
+## 依赖包
+
+```bash
+npm config set registry=https://registry.npmjs.org/
+```
+
 wait... 输入你的组件名 {{ComponentName}}
 
 ## 优化 20211110
 
-路由权限验证
-热模块更新
-表单查询
-拦截器
-store 数据
+-   路由权限验证
+-   热模块更新
+-   表单查询
+-   拦截器
+-   store 数据
+-   多线程编译
