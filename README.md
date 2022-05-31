@@ -6,6 +6,10 @@ react-typescript-app 脚手架
 
 typescript, react, scss, less, plop, antd
 
+## NodeJS
+
+v13.14.0
+
 ## 初次打开
 
 > yarn open
