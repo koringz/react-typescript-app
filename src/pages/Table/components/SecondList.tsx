@@ -1,8 +1,9 @@
 import React, { PureComponent, useEffect, useState } from 'react'
 import { Table, Avatar } from 'antd'
 
-import { connect } from "react-redux";
-import store from "@/store/store"
+import EditTable from './EditTable'
+import { connect } from 'react-redux'
+import store from '@/store/store'
 
 let getDataSource: any[] = []
 for (let i = 0; i < 20; i += 1) {
@@ -10,7 +11,7 @@ for (let i = 0; i < 20; i += 1) {
         key: i,
         title: ['Light', 'Bamboo', 'Little'][i % 3],
         author: ['Light', 'Bamboo', 'Little'][i % 3],
-        categories: 'Everything that has a beginning, has an end.',
+        categories: 'Everything that has a beginning, has an end.'
     })
 }
 
@@ -19,7 +20,7 @@ const SecondList = (props: any) => {
         pageSize: 10,
         pageNum: 1,
         total: 0,
-        loading: false,
+        loading: false
     })
     const [dataSource, setDataSource] = useState(getDataSource)
     const columns = [
@@ -40,7 +41,7 @@ const SecondList = (props: any) => {
             dataIndex: 'categories',
             key: 'categories',
             width: 200
-        },
+        }
     ]
 
     useEffect(() => {
@@ -73,18 +74,24 @@ const SecondList = (props: any) => {
         })
         getList()
     }
+    const onCancel = () => {}
 
     const { total, pageSize, pageNum } = state
     return (
         <div>
             {/* {JSON.stringify(props.tableForm)} */}
-            <Table key={Math.random()}
-                className='rc-antd-layout-pagination rc-antd-layout-table'
+            <Table
+                key={Math.random()}
+                className="rc-antd-layout-pagination rc-antd-layout-table"
                 columns={columns}
-                dataSource={!dataSource ? [] : dataSource.map((item: any, index: number) => {
-                    item.key = item.key || index
-                    return item
-                })}
+                dataSource={
+                    !dataSource
+                        ? []
+                        : dataSource.map((item: any, index: number) => {
+                              item.key = item.key || index
+                              return item
+                          })
+                }
                 pagination={{
                     simple: false,
                     showSizeChanger: true,
@@ -92,18 +99,17 @@ const SecondList = (props: any) => {
                     pageSize: pageSize,
                     total: total,
                     current: pageNum,
-                    showTotal: (count) => {
+                    showTotal: (count:number) => {
                         let pageNum = Math.ceil(count)
                         return '共' + pageNum + '条'
                     },
                     onChange: handleOnChange
                 }}
             />
+            <EditTable onCancel={() => onCancel()}></EditTable>
         </div>
     )
 }
-
-
 
 function mapStateToProps(state: any) {
     return {

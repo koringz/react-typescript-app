@@ -47,35 +47,41 @@ export const SetRoutes = [
                 hidden: true,
                 title: '主页',
                 icon: 'bars',
-                component: LoadComponent(() => import('@/pages/Home/index.tsx')),
+                component: LoadComponent(() => import('@/pages/Home/index.tsx'))
             },
-            // {
-            //     menuid: '2-2',
-            //     parentid: 2,
-            //     key: '/home/sub',
-            //     name: 'homeSub',
-            //     redirect: '/home/sub/one',
-            //     title: '子菜单',
-            //     icon: 'bars',
-            //     children: [
-            //         {
-            //             menuid: '2-2-1',
-            //             parentid: '2-2',
-            //             key: '/home/sub/one',
-            //             name: 'homeSubOne',
-            //             title: '孙子菜单-one',
-            //             component: LoadComponent(() => import('@/pages/Dash/index.tsx'))
-            //         },
-            //         {
-            //             menuid: '2-2-2',
-            //             parentid: '2-2',
-            //             title: '孙子菜单-two',
-            //             name: 'homeSubTwo',
-            //             key: '/home/sub/two',
-            //             component: LoadComponent(() => import('@/pages/Dash/index.tsx'))
-            //         }
-            //     ]
-            // }
+            {
+                menuid: '2-2',
+                parentid: 2,
+                key: '/home/sub',
+                name: 'homeSub',
+                redirect: '/home/sub/one',
+                needLogin: true,
+                hidden: true,
+                title: '子菜单',
+                icon: 'bars',
+                children: [
+                    {
+                        menuid: '2-2-1',
+                        parentid: '2-2',
+                        key: '/home/sub/one',
+                        name: 'homeSubOne',
+                        needLogin: true,
+                        hidden: true,
+                        title: '孙子菜单-one',
+                        component: LoadComponent(() => import('@/pages/Home/index.tsx'))
+                    },
+                    {
+                        menuid: '2-2-2',
+                        parentid: '2-2',
+                        title: '孙子菜单-two',
+                        name: 'homeSubTwo',
+                        needLogin: true,
+                        hidden: true,
+                        key: '/home/sub/two',
+                        component: LoadComponent(() => import('@/pages/Home/index.tsx'))
+                    }
+                ]
+            }
         ]
     },
     {
@@ -127,7 +133,7 @@ export const SetRoutes = [
         title: '登陆界面',
         icon: 'bars',
         component: LoadComponent(() => import('@/pages/Login/index.tsx'))
-    },
+    }
 ]
 
 // 根据路由名称获取可访问的路由表
@@ -138,8 +144,7 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
         if (permission.includes(route.name.toLowerCase())) {
             if (!routeNames.includes(route.name.toLowerCase())) {
                 route.hidden = true
-            }
-            else {
+            } else {
                 route.hidden = false
             }
 
@@ -153,11 +158,11 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
     return acceptRouteMap
 }
 
-
 // 设置权限访问控制
-const permission = ['table', 'home', 'form', 'main', 'homeSub', 'homeSubOne', 'uploadfile', 'homeSubTwo', 'permission']
+const permission = ['table', 'home', 'form', 'main', 'homesub', 'homesubone', 'uploadfile', 'homesubtwo', 'permission']
 
-// sessionStorage.menu = JSON.stringify([{route: "table"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
+// 注意必须要小写检索
+// sessionStorage.menu = JSON.stringify([{route: "table"},{route: "homesubtwo"},{route: "homesub"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
 
 /**
  * 获取权限路径-过滤数据
@@ -169,12 +174,15 @@ const PermissionRoutes = () => {
         const localMenu = sessionStorage.getItem('menu')
         if (localMenu && localMenu.length) {
             const originMenuData = JSON.parse(localMenu)
-            results = originMenuData.map((item: any) => {
-                return item.route ? item.route : ''
-            }).filter((item: never) => item)
+            results = originMenuData
+                .map((item: any) => {
+                    return item.route ? item.route : ''
+                })
+                .filter((item: never) => item)
         }
         return results
     }
+    console.log(getLocalMenu())
     return filterRouteMap(getLocalMenu(), SetRoutes)
 }
 

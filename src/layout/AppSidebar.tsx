@@ -122,6 +122,9 @@ export default class AppSidebar extends React.Component {
     render() {
         const { menus } = this.props as any
         const { openKeys, selectedKeys } = this.state
+        console.log(selectedKeys)
+        console.log(openKeys)
+        console.log((this.props as any).menus)
         return (
             <Menu
                 mode="inline"

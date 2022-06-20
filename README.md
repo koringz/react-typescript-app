@@ -38,3 +38,6 @@ wait... 输入你的组件名 {{ComponentName}}
 -   拦截器
 -   store 数据
 -   多线程编译(20220519)
+-   tilg 添加追踪调试信息
+
+npm i --legacy-peer-deps
