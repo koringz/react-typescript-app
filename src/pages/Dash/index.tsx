@@ -3,12 +3,12 @@
  *  日期: 2021-10-30
  */
 
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { Layout } from 'antd'
 
 const { Content } = Layout
 
-class Dash extends Component {
+class Dash extends PureComponent {
     render() {
         return (
             <Layout>

@@ -1,12 +1,12 @@
-import { Card, Form, Row, Space, Input, Button } from "antd";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Card, Form, Row, Space, Input, Button } from 'antd'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
-import * as action from "@/store/table/action"
-import { connect } from "react-redux";
+import * as action from '@/store/table/action'
+import { connect } from 'react-redux'
 
 const SearchForm = (props: any) => {
     const [state, setState] = useState({
-        formConditions: {},
+        formConditions: {}
     })
     const [form] = Form.useForm()
     // 监听 - 接收参数
@@ -36,16 +36,25 @@ const SearchForm = (props: any) => {
         props.storeSearchParams({ tableFormList: [] })
     }
     return (
-        <Form className="mt10 mb20 rc-antd-layout-search-form" layout="inline" form={form} onFinish={(value: EventTarget) => onSearch(value)}>
+        <Form
+            className="mt10 mb20 rc-antd-layout-search-form"
+            layout="inline"
+            form={form}
+            onFinish={(value: EventTarget) => onSearch(value)}
+        >
             <Card bordered={true} className="f1">
                 <Row gutter={24}>
                     <Space>
-                        <Form.Item name="name" label="用户名" >
+                        <Form.Item name="name" label="用户名1">
                             <Input placeholder="请输入" onPressEnter={onSearch}></Input>
                         </Form.Item>
                         <Form.Item>
-                            <Button size="middle" type="primary" htmlType="submit">查询</Button>
-                            <Button size="middle" onClick={onReset}>重置</Button>
+                            <Button size="middle" type="primary" htmlType="submit">
+                                查询
+                            </Button>
+                            <Button size="middle" onClick={onReset}>
+                                重置
+                            </Button>
                         </Form.Item>
                     </Space>
                 </Row>
@@ -53,7 +62,6 @@ const SearchForm = (props: any) => {
         </Form>
     )
 }
-
 
 function mapDispathToProps(dispatch: any) {
     return {

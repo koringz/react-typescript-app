@@ -13,10 +13,9 @@ const isLogin = () => {
     return sessionStorage.getItem('token') ? true : false
 }
 
-
 const Login = SetRoutes.find((v: any) => '/login' === v.key) as any
 const Nofound = SetRoutes.find((v: any) => '/404' === v.key) as any
-class App extends React.PureComponent {
+class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
@@ -38,6 +37,6 @@ class App extends React.PureComponent {
     }
 }
 
-export default hot(App)
+const hotApp = () => <App />
 
-
+export default hot(hotApp)

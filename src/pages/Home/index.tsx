@@ -21,7 +21,7 @@ for (let i = 0; i < 20; i += 1) {
     })
 }
 
-class Home extends React.Component {
+class Home extends PureComponent {
     constructor(props: any) {
         super(props)
         this.state = {
@@ -40,7 +40,7 @@ class Home extends React.Component {
                 {
                     title: '描述',
                     dataIndex: 'description',
-                    render: (text:string,record:any, index:number) => <Tooltip overlay={text}>{text}</Tooltip>
+                    render: (text: string, record: any, index: number) => <Tooltip overlay={text}>{text}</Tooltip>
                 },
                 {
                     title: '操作',

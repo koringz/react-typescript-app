@@ -1,7 +1,7 @@
 import React, { PureComponent, useEffect, useState } from 'react'
 import { Table, Avatar } from 'antd'
 
-import EditTable from './EditTable'
+// import EditTable from './EditTable'
 import { connect } from 'react-redux'
 import store from '@/store/store'
 
@@ -99,14 +99,14 @@ const SecondList = (props: any) => {
                     pageSize: pageSize,
                     total: total,
                     current: pageNum,
-                    showTotal: (count:number) => {
+                    showTotal: (count: number) => {
                         let pageNum = Math.ceil(count)
                         return '共' + pageNum + '条'
                     },
                     onChange: handleOnChange
                 }}
             />
-            <EditTable onCancel={() => onCancel()}></EditTable>
+            {/* <EditTable onCancel={() => onCancel()}></EditTable> */}
         </div>
     )
 }

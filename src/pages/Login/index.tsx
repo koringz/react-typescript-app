@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { Form, Input, Button, Modal, Checkbox } from 'antd'
 import { AppstoreOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import { FormInstance } from 'antd/es/form'
 
 import '@/pages/Login/index.scss'
 
-class WrappedNormalLoginForm extends Component {
+class WrappedNormalLoginForm extends PureComponent {
     formRef = React.createRef<FormInstance>()
     state = { visible: false }
     constructor(props: any) {
         super(props)
     }
-    onFill = (values: any) => {
-    }
+    onFill = (values: any) => {}
     onFinish = (values: any) => {
         const { history } = this.props as any
         sessionStorage.token = values.username
@@ -20,8 +19,7 @@ class WrappedNormalLoginForm extends Component {
             pathname: '/home'
         })
     }
-    onFinishFailed = (errorInfo: any) => {
-    }
+    onFinishFailed = (errorInfo: any) => {}
 
     render() {
         return (

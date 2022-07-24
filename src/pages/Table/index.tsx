@@ -3,7 +3,7 @@
  *  日期: 2022-5-5
  */
 
-import React, { Component, PureComponent } from 'react'
+import React, { Component, Fragment, PureComponent } from 'react'
 import { Tabs, Layout } from 'antd'
 import SearchForm from './SearchForm'
 
@@ -21,7 +21,7 @@ const EnumPostStatus = {
 class MultTable extends PureComponent {
     render() {
         return (
-            <Layout className='rc-antd-layout-pagination rc-antd-layout-table'>
+            <Layout className="rc-antd-layout-pagination rc-antd-layout-table">
                 <SearchForm />
                 <TableList {...this.props} />
             </Layout>
@@ -29,7 +29,7 @@ class MultTable extends PureComponent {
     }
 }
 
-class TableList extends Component {
+class TableList extends PureComponent {
     constructor(props: any) {
         super(props)
         this.state = {
@@ -44,7 +44,7 @@ class TableList extends Component {
     render() {
         const { tab } = this.state as any
         return (
-            <Content >
+            <Fragment>
                 <Tabs activeKey={tab} onChange={this.onHandleTabChange.bind(this)}>
                     <TabPane tab={`公用`} key={String(EnumPostStatus.First)}>
                         {tab === String(EnumPostStatus.First) && <FirstList {...this.props} />}
@@ -53,7 +53,7 @@ class TableList extends Component {
                         {tab === String(EnumPostStatus.Second) && <SecondList {...this.props} />}
                     </TabPane>
                 </Tabs>
-            </Content>
+            </Fragment>
         )
     }
 }

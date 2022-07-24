@@ -6,10 +6,9 @@
 import React, { Component, PureComponent } from 'react'
 import { Layout, Tree } from 'antd'
 
-
 const { Content } = Layout
 
-class Permission extends Component {
+class Permission extends PureComponent {
     constructor(props: any) {
         super(props)
         this.state = {
@@ -21,18 +20,22 @@ class Permission extends Component {
                         {
                             title: 'leaf',
                             key: '1-a'
-                        }]
+                        }
+                    ]
                 },
                 {
                     title: '4546',
                     key: '2',
-                    children: [{
-                        title: 'react',
-                        key: '2-a'
-                    }, {
-                        title: 'react',
-                        key: '3-a'
-                    },]
+                    children: [
+                        {
+                            title: 'react',
+                            key: '2-a'
+                        },
+                        {
+                            title: 'react',
+                            key: '3-a'
+                        }
+                    ]
                 }
             ],
             checkedKeys: [],
@@ -42,7 +45,7 @@ class Permission extends Component {
     }
     /**
      * 监听事件
-     * @returns 
+     * @returns
      */
 
     onSelect(expandedKeys: React.Key[]) {
@@ -66,7 +69,7 @@ class Permission extends Component {
     render() {
         const { checkedKeys, expandedKeys, autoExpandParent, treeData } = this.state as any
         return (
-            <Layout className='Permission'>
+            <Layout className="Permission">
                 <Content>
                     <Tree
                         checkable
@@ -77,8 +80,7 @@ class Permission extends Component {
                         onSelect={this.onSelect.bind(this)}
                         onExpand={this.onExpand.bind(this)}
                         autoExpandParent={autoExpandParent}
-                    >
-                    </Tree>
+                    ></Tree>
                 </Content>
             </Layout>
         )
