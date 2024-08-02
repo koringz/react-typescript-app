@@ -5,7 +5,7 @@
   "author": "koringz",
   "license": "ISC",
   "scripts": {
-    "open": "yarn go --open",
+    "open": "npm run --open go",
     "go": "webpack-dev-server --config config/webpack.development.config.js",
     "build:dev": "cross-env FIRST_ENV=development --env.NODE_ENV=development webpack --config config/webpack.development.config.js",
     "build:prod": "cross-env FIRST_ENV=production --env.NODE_ENV=production webpack --config config/webpack.production.config.js",

@@ -4,8 +4,7 @@
  */
 
 import React from 'react'
-import { Switch } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+import { Switch, withRouter } from 'react-router-dom'
 import { Layout } from 'antd'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 const { Sider, Header, Content, Footer } = Layout

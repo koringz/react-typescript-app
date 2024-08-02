@@ -162,7 +162,7 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
 const permission = ['table', 'home', 'form', 'main', 'homesub', 'homesubone', 'uploadfile', 'homesubtwo', 'permission']
 
 // 注意必须要小写检索
-// sessionStorage.menu = JSON.stringify([{route: "table"},{route: "homesubtwo"},{route: "homesub"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
+sessionStorage.menu = JSON.stringify([{route: "table"},{route: "homesubtwo"},{route: "homesub"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
 
 /**
  * 获取权限路径-过滤数据

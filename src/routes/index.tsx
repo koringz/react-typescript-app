@@ -101,11 +101,7 @@ class PermissionAuth extends React.Component {
         else {
             // 路由合法
             if (targetRouterConfig && targetRouterConfig.needLogin) {
-                return (
-                    <Switch>
-                        <Redirect to="/login" />
-                    </Switch>
-                )
+                return <Redirect to="/login" />
             } else {
                 // 非登陆状态下,路由不合法时, 重定向至 404
                 return <Redirect to="/404" />
