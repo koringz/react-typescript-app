@@ -63,11 +63,12 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.1+4.13.0",
-    "copy-webpack-plugin": "^10.2.4",
     "@types/redux-logger": "^3.0.9",
+    "copy-webpack-plugin": "^10.2.4",
     "prettier": "2.3.2",
     "sass": "^1.39.0",
     "sass-loader": "^12.3.0",
+    "sass-resources-loader": "^2.2.5",
     "thread-loader": "^3.0.4",
     "tilg": "^0.1.1",
     "webpack": "^5.52.0"

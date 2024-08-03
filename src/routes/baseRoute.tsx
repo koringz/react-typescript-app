@@ -95,6 +95,16 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
+        menuid: 3,
+        key: '/platform',
+        name: 'platform',
+        needLogin: true,
+        hidden: true,
+        title: '工作台',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/pages/Platform/index.tsx'))
+    },
+    {
         menuid: 7,
         key: '/uploadfile',
         name: 'uploadfile',
@@ -159,10 +169,18 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
 }
 
 // 设置权限访问控制
-const permission = ['table', 'home', 'form', 'main', 'homesub', 'homesubone', 'uploadfile', 'homesubtwo', 'permission']
+const permission = [
+    'table', 'home', 'form', 'main',
+    'platform',
+    'homesub', 'homesubone', 'uploadfile', 'homesubtwo', 'permission'
+]
 
 // 注意必须要小写检索
-sessionStorage.menu = JSON.stringify([{route: "table"},{route: "homesubtwo"},{route: "homesub"},{route: "home"},{route: "permission"},{route: "main"},{route: "uploadfile"}])
+sessionStorage.menu = JSON.stringify([
+    { route: "table" }, { route: "homesubtwo" },
+    { route: "homesub" }, { route: "home" }, { route: "platform" },
+    { route: "permission" }, { route: "main" }, { route: "uploadfile" }
+])
 
 /**
  * 获取权限路径-过滤数据

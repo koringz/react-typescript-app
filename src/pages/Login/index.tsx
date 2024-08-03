@@ -16,7 +16,7 @@ class WrappedNormalLoginForm extends PureComponent {
         const { history } = this.props as any
         sessionStorage.token = values.username
         history.push({
-            pathname: '/home'
+            pathname: '/home/main'
         })
     }
     onFinishFailed = (errorInfo: any) => {}
