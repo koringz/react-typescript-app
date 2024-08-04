@@ -2,13 +2,13 @@
  *  作者: koringz
  *  日期: 2024/8/2
  */
-import React, { Component, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 
-import { Layout, Tree } from 'antd'
-
-const { Content } = Layout
+import { Layout, Divider } from 'antd'
 
 import ArticleContent from './ArticleContent'
+import CollapseContent from './CollapseContent'
+import DefaultTable from './DefaultTable'
 
 type MyFlexContainer = {
     flex: number
@@ -23,17 +23,22 @@ const headSty: MyFlexContainer = {
 class Platform extends PureComponent {
     render() {
         return (
-            // 长方形块 标题 连接
-            <Layout style={headSty}>
-                <ArticleContent></ArticleContent>
-                <ArticleContent></ArticleContent>
-                <ArticleContent></ArticleContent>
-                <ArticleContent></ArticleContent>
-            </Layout>
+            <>
+                {/* 长方形块 标题 连接 */}
+                <Layout style={headSty}>
+                    <ArticleContent></ArticleContent>
+                    <ArticleContent></ArticleContent>
+                    <ArticleContent></ArticleContent>
+                    <ArticleContent></ArticleContent>
+                </Layout>
 
-            // 卡片
+                {/* 卡片 */}
+                <CollapseContent></CollapseContent>
 
-            // 切换 审核 卡页面
+                {/* 切换 审核 卡页面 */}
+                <Divider orientation="left">列表</Divider>
+                <DefaultTable />
+            </>
         )
     }
 }

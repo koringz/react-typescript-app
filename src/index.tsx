@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import 'antd/dist/antd.css'
+// import 'antd/dist/reset.css'
 import './assets/iconfont/iconfont.css'
 import zhCN from 'antd/lib/locale/zh_CN';
 import { ConfigProvider } from 'antd';
