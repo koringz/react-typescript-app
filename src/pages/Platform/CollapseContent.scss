@@ -1,0 +1,25 @@
+.collapse-content {
+  ul {
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ant-list-item {
+    flex-grow: 1;
+    border-block-end: 0
+  }
+
+  .ant-collapse-header {
+    padding-bottom: 0;
+    padding-left: 0
+  }
+
+  .ant-collapse-content {
+
+    .ant-collapse-content-box {
+      padding-top: 0 !important;
+      padding-right: 0 !important
+    }
+  }
+}

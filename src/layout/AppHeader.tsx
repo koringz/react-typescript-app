@@ -46,7 +46,7 @@ class AppHeader extends React.PureComponent {
         return (
             <div className="header-container rc-header">
                 <Header className="header">
-                    <span className="avator-icon white">koringz react demo123</span>
+                    <span className="avator-icon white">Koringz react</span>
                     <div className="header-info-center fz14">
                         <Avatar alt="" icon={<UserOutlined />} className="mr10" />
                         {/* <Dropdown overlay={this.menu}> */}
