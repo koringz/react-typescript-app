@@ -10,6 +10,7 @@ const { Content } = Layout
 
 import UserDescri from './UserDescri'
 import StoreDescri from './StoreDescri'
+import CustomerDescri from './CustomerDescri'
 
 class BasicDetails extends PureComponent {
     render() {
@@ -19,6 +20,8 @@ class BasicDetails extends PureComponent {
                     <StoreDescri />
                     <Divider />
                     <UserDescri />
+                    <Divider />
+                    <CustomerDescri />
                 </Content>
             </>
         )

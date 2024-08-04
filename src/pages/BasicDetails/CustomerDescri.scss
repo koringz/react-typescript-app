@@ -1,0 +1,40 @@
+$count_num: 10px;
+
+@mixin cus_descri {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.descri-text {
+  font-size: 14px;
+  line-height: $count_num *2;
+}
+
+
+.customer-descri {
+  @include cus_descri();
+  @extend .descri-text;
+
+  .descri-icon {
+    .anticon {
+      font-size: $count_num *4;
+      border-radius: 50%;
+      padding: $count_num;
+      background-color: #0baf78;
+      color: #fff
+    }
+  }
+
+  .operation-action {
+    font-size: $count_num * 2;
+    margin: $count_num 0;
+    color: #111
+  }
+
+  .tips {
+    margin: 0 auto;
+    width: 76%;
+    color: #999
+  }
+}
