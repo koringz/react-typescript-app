@@ -95,7 +95,7 @@ export const SetRoutes = [
         component: LoadComponent(() => import('@/pages/Table/index.tsx'))
     },
     {
-        menuid: 3,
+        menuid: 14,
         key: '/platform',
         name: 'platform',
         needLogin: true,
@@ -103,6 +103,16 @@ export const SetRoutes = [
         title: '工作台',
         icon: 'bars',
         component: LoadComponent(() => import('@/pages/Platform/index.tsx'))
+    },
+    {
+        menuid: 15,
+        key: '/basic_details',
+        name: 'basic_details',
+        needLogin: true,
+        hidden: true,
+        title: '基本信息',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/pages/BasicDetails/index.tsx'))
     },
     {
         menuid: 7,
@@ -170,16 +180,30 @@ const filterRouteMap = (routeNames: string[], routeMap: any) => {
 
 // 设置权限访问控制
 const permission = [
-    'table', 'home', 'form', 'main',
+    'table',
+    'home',
+    'form',
+    'main',
     'platform',
-    'homesub', 'homesubone', 'uploadfile', 'homesubtwo', 'permission'
+    'basic_details',
+    'homesub',
+    'homesubone',
+    'uploadfile',
+    'homesubtwo',
+    'permission'
 ]
 
 // 注意必须要小写检索
 sessionStorage.menu = JSON.stringify([
-    { route: "table" }, { route: "homesubtwo" },
-    { route: "homesub" }, { route: "home" }, { route: "platform" },
-    { route: "permission" }, { route: "main" }, { route: "uploadfile" }
+    { route: 'table' },
+    { route: 'homesubtwo' },
+    { route: 'homesub' },
+    { route: 'home' },
+    { route: 'platform' },
+    { route: 'basic_details' },
+    { route: 'permission' },
+    { route: 'main' },
+    { route: 'uploadfile' }
 ])
 
 /**
