@@ -1,11 +1,14 @@
-.rc-DefaultLayout{
-    background: #f0f2f5;
+.rc-DefaultLayout {
+  background: #f0f2f5;
 }
+
 .wrapper {
-    flex: 1 0 auto;
+  display: flex;
+  flex: 1 0 auto;
 }
-.layout__route{
-    min-height: 500px;
-    background-color: #fff;
-    padding: 28px 22px;
+
+.layout__route {
+  min-height: 500px;
+  background-color: #fff;
+  padding: 28px 22px;
 }

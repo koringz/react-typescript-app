@@ -30,7 +30,6 @@ const DefaultLayout = (props: any) => {
             <div className="wrapper">
                 <div
                     style={{
-                        height: 'calc(100vh - 64px)',
                         overflowY: 'auto',
                         float: 'left',
                         width: '256px',

@@ -38,6 +38,8 @@ class Platform extends PureComponent {
                 {/* 切换 审核 卡页面 */}
                 <Divider orientation="left">列表</Divider>
                 <DefaultTable />
+                <Divider></Divider>
+                <DefaultTable />
             </>
         )
     }
