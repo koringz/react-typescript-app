@@ -126,6 +126,16 @@ export const SetRoutes = [
     },
     {
         menuid: 7,
+        key: '/form_check',
+        name: 'form_check',
+        needLogin: true,
+        hidden: true,
+        title: '表单审核',
+        icon: 'bars',
+        component: LoadComponent(() => import('@/pages/FormCheck/index.tsx'))
+    },
+    {
+        menuid: 7,
         key: '/permission',
         name: 'permission',
         needLogin: true,
@@ -186,6 +196,7 @@ const permission = [
     'main',
     'platform',
     'basic_details',
+    'form_check',
     'homesub',
     'homesubone',
     'uploadfile',
@@ -201,6 +212,7 @@ sessionStorage.menu = JSON.stringify([
     { route: 'home' },
     { route: 'platform' },
     { route: 'basic_details' },
+    { route: 'form_check' },
     { route: 'permission' },
     { route: 'main' },
     { route: 'uploadfile' }

@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import useTilg from 'tilg'
 
 const SearchForm = (props: any) => {
-    const [val, setVal] = useState(1)
-    const [state, setState] = useState({
-        formConditions: {},
-        val: 1
+    const [state, setState] = useState<{
+        formConditions: any
+    }>({
+        formConditions: {}
     })
     const [form] = Form.useForm()
     // 监听 - 接收参数
@@ -17,7 +17,7 @@ const SearchForm = (props: any) => {
     }, [state.formConditions])
     // 回调 - 接收参数
     const refresh = useCallback(() => {
-        setState({ formConditions: form.getFieldsValue() })
+        setState({ ...state, formConditions: form.getFieldsValue() })
     }, [form])
     // 初始化
     useEffect(() => {
@@ -31,11 +31,10 @@ const SearchForm = (props: any) => {
         refresh()
     }
     const onReset = (value: any) => {
-        setVal(3)
         form.resetFields()
     }
     // 追踪日志信息
-    useTilg(val, state)
+    useTilg(state)
     return (
         <Form
             className="mt10 mb20 rc-antd-layout-search-form"

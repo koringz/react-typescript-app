@@ -1,41 +1,47 @@
 .rc-header {
-    .header {
-        display: flex;
-        flex: 1;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        background-color: #0076e6;
-        .header-info-center {
-            .user-name {
-                color: rgb(236, 234, 234);
-            }
-        }
-        .header-nav {
-            display: inline-block;
-            margin-left: 200px;
-            li {
-                padding: 0 20px;
-                a {
-                    color: #fff;
-                }
-            }
-        }
+  .header {
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: $bgColor;
+
+    .header-info-center {
+      .user-name {
+        color: rgb(236, 234, 234);
+      }
     }
-    .avator-icon {
-        // display: inline-block;
-        // margin-top: 10px;
-        // height: 44px;
-        // width: 44px;
-        // flex: 1;
-        // flex-direction: column;
-        // justify-content: center;
-        // justify-items: center;
-        // overflow: hidden;
-        // border-radius: 50px;
-        // border: 2px solid rgb(255, 255, 255);
-        img {
-            // height: 44px;
-            // width: 44px,
+
+    .header-nav {
+      display: inline-block;
+      margin-left: 200px;
+
+      li {
+        padding: 0 20px;
+
+        a {
+          color: #fff;
         }
+      }
     }
+  }
+
+  .avator-icon {
+
+    // display: inline-block;
+    // margin-top: 10px;
+    // height: 44px;
+    // width: 44px;
+    // flex: 1;
+    // flex-direction: column;
+    // justify-content: center;
+    // justify-items: center;
+    // overflow: hidden;
+    // border-radius: 50px;
+    // border: 2px solid rgb(255, 255, 255);
+    img {
+      // height: 44px;
+      // width: 44px,
+    }
+  }
 }
