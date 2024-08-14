@@ -1,6 +1,8 @@
 const path = require('path')
-// 打包文件到HTML
+// 压缩打包文件到HTML
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// 压缩文件
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const resolve = dir => path.join(__dirname, '..', dir)
 const distConfig = `dist-${process.env.FIRST_ENV}`
@@ -16,7 +18,8 @@ const coreConfig = env => {
         },
         output: {
             path: resolve(distConfig),
-            filename: 'js/[name].[chunkhash].js'
+            filename: 'js/[name].[chunkhash].js',
+            chunkFilename: 'js/[name].[chunkhash].js',
         },
         // 处理文件名操作
         resolve: {
@@ -123,6 +126,7 @@ const coreConfig = env => {
             ]
         },
         plugins: [
+            new UglifyJSPlugin(),
             new HtmlWebpackPlugin({
                 inject: true,
                 title: 'React-Demo',

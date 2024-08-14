@@ -1,8 +1,10 @@
 // 深度合并对象
+const path = require('path')
 const { merge } = require('webpack-merge')
 const coreConfig = require('./webpack.core')
 const baseConfig = require('./webpack.base')
 const copyWebpackPlugin = require('copy-webpack-plugin')
+
 const resolve = dir => path.join(__dirname, '..', dir)
 const distConfig = `dist-${process.env.FIRST_ENV}`
 
@@ -27,14 +29,14 @@ const mainConfig = env => {
             }
         },
         plugins: [
-            new copyWebpackPlugin({
-                patterns: [
-                    {
-                        from: resolve('public/test.bat'),
-                        to: resolve(`${distConfig}/oct`)
-                    }
-                ]
-            })
+            // new copyWebpackPlugin({
+            // patterns: [
+            //     {
+            //         from: resolve('public/test.bat'),
+            //         to: resolve(`${distConfig}/oct`)
+            //     }
+            // ]
+            // })
         ]
     }
 }

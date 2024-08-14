@@ -48,3 +48,4 @@ npm i --legacy-peer-deps
 -   升级 antd 库新版本
 -   新增工作台菜单页
 -   第三方库按需导入 babel-plugin-import
+-   添加压缩插件 uglifyjs-webpack-plugin

@@ -1,11 +1,18 @@
 {
-    "plugins": [
-        [
-            "@babel/plugin-syntax-typescript",
-            {
-                "isTSX": true 
-            }
-        ],
-        "react-hot-loader/babel"
-    ]
+  "plugins": [
+    [
+      "import", {
+        "libraryName": "antd",
+        "libraryDirectory": "lib"
+      },
+      "antd"
+    ],
+    [
+      "@babel/plugin-syntax-typescript",
+      {
+        "isTSX": true
+      }
+    ],
+    "react-hot-loader/babel"
+  ]
 }
